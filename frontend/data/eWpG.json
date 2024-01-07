@@ -1,4 +1,5 @@
 {
+    "_id": "eWpG",
     "type": "Law",
     "title": "Gesetz über elektronische Wertpapiere",
     "abbreviation": "eWpG",
@@ -285,8 +286,8 @@
                                     "url":"EU-VO-236/2012"
                                 },
                                 {
-                                "type":"TextSpan",
-                                "content":" ("
+                                    "type":"TextSpan",
+                                    "content":" ("
                                 },
                                 {
                                     "type":"Reference",
@@ -764,7 +765,7 @@
                                             "type":"Reference",
                                             "text":"§ Absatz 3",
                                             "url":"DE-eWpG-Par12-Sec3"
-                                        },                                        
+                                        },
                                         {
                                             "type": "TextSpan",
                                             "content": " geregelten Fällen setzt die Ersetzung eines mittels Urkunde begebenen Wertpapiers durch ein elektronisches Wertpapier die ausdrückliche Zustimmung des Berechtigten voraus."
@@ -1123,7 +1124,7 @@
                                             "type":"Reference",
                                             "text":"Absatz 2",
                                             "url":"DE-eWpG-Par10-Sec2"
-                                        },                                        
+                                        },
                                         {
                                             "type": "TextSpan",
                                             "content": " Einsicht in ein elektronisches Wertpapierregister zu gewähren und gemäß "
@@ -1209,16 +1210,16 @@
                     ]
                 },
                 {
-            "type": "Paragraph",
-            "ordinal": "11",
-            "title": "Aufsicht",
-            "content": [
-                {
-                    "type": "TextSpan",
-                    "content": "Die Bundesanstalt für Finanzdienstleistungsaufsicht überwacht als Aufsichtsbehörde die Führung eines elektronischen Wertpapierregisters nach diesem Gesetz."
+                    "type": "Paragraph",
+                    "ordinal": "11",
+                    "title": "Aufsicht",
+                    "content": [
+                        {
+                            "type": "TextSpan",
+                            "content": "Die Bundesanstalt für Finanzdienstleistungsaufsicht überwacht als Aufsichtsbehörde die Führung eines elektronischen Wertpapierregisters nach diesem Gesetz."
+                        }
+                    ]
                 }
-            ]
-        }
             ]
         },
         {
@@ -1812,235 +1813,235 @@
             "ordinal": "3",
             "content": [
                 {
-                            "type": "Paragraph",
-                            "ordinal": "16",
-                            "title": "Kryptowertpapierregister",
-                            "content": [
+                    "type": "Paragraph",
+                    "ordinal": "16",
+                    "title": "Kryptowertpapierregister",
+                    "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"TextSpan",
+                                    "content":"Ein Kryptowertpapierregister muss auf einem fälschungssicheren Aufzeichnungssystem geführt werden, in dem Daten in der Zeitfolge protokolliert und gegen unbefugte Löschung sowie nachträgliche Veränderung geschützt gespeichert werden."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"Sentence",
                                     "ordinal":"1",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Ein Kryptowertpapierregister muss auf einem fälschungssicheren Aufzeichnungssystem geführt werden, in dem Daten in der Zeitfolge protokolliert und gegen unbefugte Löschung sowie nachträgliche Veränderung geschützt gespeichert werden."
+                                            "content":"Registerführende Stelle ist, wer vom Emittenten gegenüber dem Inhaber als solche benannt wird. Unterbleibt eine solche Benennung, gilt der Emittent als registerführende Stelle."
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"2",
                                     "content":[
                                         {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Registerführende Stelle ist, wer vom Emittenten gegenüber dem Inhaber als solche benannt wird. Unterbleibt eine solche Benennung, gilt der Emittent als registerführende Stelle."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Ein Wechsel der registerführenden Stelle durch den Emittenten ist ohne Zustimmung des Inhabers oder des Berechtigten zulässig, es sei denn, in den Emissionsbedingungen ist etwas Abweichendes geregelt."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"Ein Wechsel der registerführenden Stelle durch den Emittenten ist ohne Zustimmung des Inhabers oder des Berechtigten zulässig, es sei denn, in den Emissionsbedingungen ist etwas Abweichendes geregelt."
                                         }
                                     ]
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
                 {
                     "type": "Paragraph",
                     "ordinal": "17",
                     "title": "Registerangaben im Kryptowertpapierregister",
                     "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"TextSpan",
+                                    "content":"Die registerführende Stelle hat sicherzustellen, dass das Kryptowertpapierregister folgende Angaben über das eingetragene Kryptowertpapier enthält:"
+                                },
+                                {
+                                    "type":"Enumeration",
                                     "ordinal":"1",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die registerführende Stelle hat sicherzustellen, dass das Kryptowertpapierregister folgende Angaben über das eingetragene Kryptowertpapier enthält:"
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"den wesentlichen Inhalt des Rechts einschließlich einer eindeutigen Kennnummer und der Kennzeichnung als Wertpapier,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"das Emissionsvolumen,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"3",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"den Nennbetrag,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"4",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"den Emittenten,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"5",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"eine Kennzeichnung, ob es sich um eine Einzel- oder eine Sammeleintragung handelt,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"6",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"den Inhaber und"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"7",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Angaben zum Mischbestand nach "
-                                                },
-                                                {
-                                                    "type":"Reference",
-                                                    "text":"§ 9 Absatz 3",
-                                                    "url":"DE-eWpG-Par9-Sec3"
-                                                },
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"."
-                                                }
-                                            ]
+                                            "content":"den wesentlichen Inhalt des Rechts einschließlich einer eindeutigen Kennnummer und der Kennzeichnung als Wertpapier,"
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Enumeration",
                                     "ordinal":"2",
                                     "content":[
                                         {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Bei einer Einzeleintragung hat die registerführende Stelle sicherzustellen, dass das Kryptowertpapierregister neben den Angaben nach Absatz 1 auch die folgenden Angaben über das eingetragene Wertpapier enthält:"
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"1",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"Verfügungsbeschränkungen zugunsten einer bestimmten Person und"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"2",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"Rechte Dritter."
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die Bezeichnung des Inhabers nach "
-                                                },
-                                                {
-                                                    "type":"Reference",
-                                                    "text":"Absatz 1 Nummer 6",
-                                                    "url":"DE-eWpG-Par17-Sec1-Enum6"
-                                                },
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":" muss bei einer Einzeleintragung durch Zuordnung einer eindeutigen Kennung erfolgen."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"3",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die registerführende Stelle hat auf Weisung eines nach ."
-                                                },
-                                                {
-                                                    "type":"Reference",
-                                                    "text":"§ 18 Absatz 1 Satz 1 Nummer 1",
-                                                    "url":"DE-eWpG-Par18-Sec1-Sent1-Enum1"
-                                                },
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":" oder "
-                                                },
-                                                {
-                                                    "type":"Reference",
-                                                    "text":"Nummer 2",
-                                                    "url":"DE-eWpG-Par18-Sec1-Sent1-Enum2"
-                                                },
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":" Weisungsberechtigten zusätzlich Angaben zu sonstigen Verfügungsbeschränkungen sowie zur Geschäftsfähigkeit des Inhabers aufzunehmen."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"das Emissionsvolumen,"
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Enumeration",
                                     "ordinal":"3",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die registerführende Stelle hat sicherzustellen, dass die Angaben nach den Absätzen 1 und 2 Satz 1 in einer Weise verknüpft sind, dass sie nur zusammen abgerufen werden können."
+                                            "content":"den Nennbetrag,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"4",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"den Emittenten,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"5",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"eine Kennzeichnung, ob es sich um eine Einzel- oder eine Sammeleintragung handelt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"6",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"den Inhaber und"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"7",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Angaben zum Mischbestand nach "
+                                        },
+                                        {
+                                            "type":"Reference",
+                                            "text":"§ 9 Absatz 3",
+                                            "url":"DE-eWpG-Par9-Sec3"
+                                        },
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"."
                                         }
                                     ]
                                 }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Bei einer Einzeleintragung hat die registerführende Stelle sicherzustellen, dass das Kryptowertpapierregister neben den Angaben nach Absatz 1 auch die folgenden Angaben über das eingetragene Wertpapier enthält:"
+                                        },
+                                        {
+                                            "type":"Enumeration",
+                                            "ordinal":"1",
+                                            "content":[
+                                                {
+                                                    "type":"TextSpan",
+                                                    "content":"Verfügungsbeschränkungen zugunsten einer bestimmten Person und"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type":"Enumeration",
+                                            "ordinal":"2",
+                                            "content":[
+                                                {
+                                                    "type":"TextSpan",
+                                                    "content":"Rechte Dritter."
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die Bezeichnung des Inhabers nach "
+                                        },
+                                        {
+                                            "type":"Reference",
+                                            "text":"Absatz 1 Nummer 6",
+                                            "url":"DE-eWpG-Par17-Sec1-Enum6"
+                                        },
+                                        {
+                                            "type":"TextSpan",
+                                            "content":" muss bei einer Einzeleintragung durch Zuordnung einer eindeutigen Kennung erfolgen."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"3",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die registerführende Stelle hat auf Weisung eines nach ."
+                                        },
+                                        {
+                                            "type":"Reference",
+                                            "text":"§ 18 Absatz 1 Satz 1 Nummer 1",
+                                            "url":"DE-eWpG-Par18-Sec1-Sent1-Enum1"
+                                        },
+                                        {
+                                            "type":"TextSpan",
+                                            "content":" oder "
+                                        },
+                                        {
+                                            "type":"Reference",
+                                            "text":"Nummer 2",
+                                            "url":"DE-eWpG-Par18-Sec1-Sent1-Enum2"
+                                        },
+                                        {
+                                            "type":"TextSpan",
+                                            "content":" Weisungsberechtigten zusätzlich Angaben zu sonstigen Verfügungsbeschränkungen sowie zur Geschäftsfähigkeit des Inhabers aufzunehmen."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"3",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Die registerführende Stelle hat sicherzustellen, dass die Angaben nach den Absätzen 1 und 2 Satz 1 in einer Weise verknüpft sind, dass sie nur zusammen abgerufen werden können."
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2048,194 +2049,194 @@
                     "ordinal": "18",
                     "title": "Änderungen des Registerinhalts",
                     "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"1",
                                     "content":[
                                         {
-                                          "type":"Sentence",
-                                          "ordinal":"1",
-                                          "content":[
-                                            {
-                                                "type":"TextSpan",
-                                                "content":"Die registerführende Stelle darf Änderungen der Angaben nach § 17 Absatz 1 und 2 sowie die Löschung des Kryptowertpapiers und seiner niedergelegten Emissionsbedingungen nur vornehmen auf Grund einer Weisung"
-                                            },
-                                            {
-                                                "type":"Enumeration",
-                                                "ordinal":"1",
-                                                "content":[
-                                                    {
-                                                        "type":"TextSpan",
-                                                        "content":"des Inhabers, es sei denn, der registerführenden Stelle ist bekannt, dass dieser nicht berechtigt ist, oder"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type":"Enumeration",
-                                                "ordinal":"2",
-                                                "content":[
-                                                    {
-                                                        "type":"TextSpan",
-                                                        "content":"einer Person oder Stelle, die hierzu berechtigt ist"
-                                                    },
-                                                    {
-                                                        "type":"Litera",
-                                                        "ordinal":"1",
-                                                        "content":[
-                                                            {
-                                                                "type":"TextSpan",
-                                                                "content":"durch Gesetz,"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type":"Litera",
-                                                        "ordinal":"2",
-                                                        "content":[
-                                                            {
-                                                                "type":"TextSpan",
-                                                                "content":"auf Grund eines Gesetzes,"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type":"Litera",
-                                                        "ordinal":"3",
-                                                        "content":[
-                                                            {
-                                                                "type":"TextSpan",
-                                                                "content":"durch Rechtsgeschäft,"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type":"Litera",
-                                                        "ordinal":"4",
-                                                        "content":[
-                                                            {
-                                                                "type":"TextSpan",
-                                                                "content":"durch gerichtliche Entscheidung oder"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type":"Litera",
-                                                        "ordinal":"5",
-                                                        "content":[
-                                                            {
-                                                                "type":"TextSpan",
-                                                                "content":"durch vollstreckbaren Verwaltungsakt."
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                          ]
+                                            "type":"TextSpan",
+                                            "content":"Die registerführende Stelle darf Änderungen der Angaben nach § 17 Absatz 1 und 2 sowie die Löschung des Kryptowertpapiers und seiner niedergelegten Emissionsbedingungen nur vornehmen auf Grund einer Weisung"
                                         },
                                         {
-                                            "type":"Sentence",
+                                            "type":"Enumeration",
+                                            "ordinal":"1",
+                                            "content":[
+                                                {
+                                                    "type":"TextSpan",
+                                                    "content":"des Inhabers, es sei denn, der registerführenden Stelle ist bekannt, dass dieser nicht berechtigt ist, oder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type":"Enumeration",
                                             "ordinal":"2",
                                             "content":[
                                                 {
                                                     "type":"TextSpan",
-                                                    "content":"Im Falle einer Verfügungsbeschränkung nach § 17 Absatz 2 Satz 1 Nummer 1 hat der Inhaber über seine Weisung hinaus der registerführenden Stelle zu versichern, dass die Zustimmung der durch die Verfügungsbeschränkungen begünstigten Personen zu der Änderung vorliegt."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"3",
-                                            "content":[
+                                                    "content":"einer Person oder Stelle, die hierzu berechtigt ist"
+                                                },
                                                 {
-                                                    "type":"TextSpan",
-                                                    "content":"Im Falle des § 17 Absatz 2 Satz 1 Nummer 2 tritt an die Stelle des Inhabers der eingetragene Dritte."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"4",
-                                            "content":[
+                                                    "type":"Litera",
+                                                    "ordinal":"1",
+                                                    "content":[
+                                                        {
+                                                            "type":"TextSpan",
+                                                            "content":"durch Gesetz,"
+                                                        }
+                                                    ]
+                                                },
                                                 {
-                                                    "type":"TextSpan",
-                                                    "content":"Die registerführende Stelle versieht den Eingang der Weisungen mit einem Zeitstempel. Die registerführende Stelle darf von einer Weisung des Inhabers ausgehen, wenn die Weisung mittels eines geeigneten Authentifizierungsinstruments erteilt wurde."
+                                                    "type":"Litera",
+                                                    "ordinal":"2",
+                                                    "content":[
+                                                        {
+                                                            "type":"TextSpan",
+                                                            "content":"auf Grund eines Gesetzes,"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type":"Litera",
+                                                    "ordinal":"3",
+                                                    "content":[
+                                                        {
+                                                            "type":"TextSpan",
+                                                            "content":"durch Rechtsgeschäft,"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type":"Litera",
+                                                    "ordinal":"4",
+                                                    "content":[
+                                                        {
+                                                            "type":"TextSpan",
+                                                            "content":"durch gerichtliche Entscheidung oder"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type":"Litera",
+                                                    "ordinal":"5",
+                                                    "content":[
+                                                        {
+                                                            "type":"TextSpan",
+                                                            "content":"durch vollstreckbaren Verwaltungsakt."
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"2",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die registerführende Stelle darf Änderungen der Angaben nach § 17 Absatz 1 Nummer 1 bis 5 und 7 sowie die Löschung einer Eintragung und ihrer niedergelegten Emissionsbedingungen nur mit Zustimmung des Emittenten vornehmen, soweit gesetzlich nichts anderes bestimmt ist."
+                                            "content":"Im Falle einer Verfügungsbeschränkung nach § 17 Absatz 2 Satz 1 Nummer 1 hat der Inhaber über seine Weisung hinaus der registerführenden Stelle zu versichern, dass die Zustimmung der durch die Verfügungsbeschränkungen begünstigten Personen zu der Änderung vorliegt."
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"3",
                                     "content":[
                                         {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die registerführende Stelle stellt sicher, dass Änderungen des Registerinhalts, insbesondere hinsichtlich des Inhabers, nur in der Reihenfolge vorgenommen werden, in der die entsprechenden Weisungen bei der registerführenden Stelle eingehen."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die registerführende Stelle versieht die Änderung des Registerinhalts mit einem Zeitstempel."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"Im Falle des § 17 Absatz 2 Satz 1 Nummer 2 tritt an die Stelle des Inhabers der eingetragene Dritte."
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"4",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die registerführende Stelle muss sicherstellen, dass Umtragungen eindeutig sind, innerhalb einer angemessenen Zeit erfolgen und die Transaktion auf dem Aufzeichnungssystem nicht wieder ungültig werden kann."
+                                            "content":"Die registerführende Stelle versieht den Eingang der Weisungen mit einem Zeitstempel. Die registerführende Stelle darf von einer Weisung des Inhabers ausgehen, wenn die Weisung mittels eines geeigneten Authentifizierungsinstruments erteilt wurde."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Die registerführende Stelle darf Änderungen der Angaben nach § 17 Absatz 1 Nummer 1 bis 5 und 7 sowie die Löschung einer Eintragung und ihrer niedergelegten Emissionsbedingungen nur mit Zustimmung des Emittenten vornehmen, soweit gesetzlich nichts anderes bestimmt ist."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"3",
+                            "content":[
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die registerführende Stelle stellt sicher, dass Änderungen des Registerinhalts, insbesondere hinsichtlich des Inhabers, nur in der Reihenfolge vorgenommen werden, in der die entsprechenden Weisungen bei der registerführenden Stelle eingehen."
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
-                                    "ordinal":"5",
+                                    "type":"Sentence",
+                                    "ordinal":"2",
                                     "content":[
                                         {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Hat die registerführende Stelle eine Änderung des Registerinhalts ohne eine Weisung nach Absatz 1 oder ohne die Zustimmung des Emittenten nach Absatz 2 vorgenommen, so muss sie die Änderung unverzüglich rückgängig machen."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die Rechte aus der Verordnung (EU) 2016/679, insbesondere deren Artikel 17, bleiben unberührt."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"Die registerführende Stelle versieht die Änderung des Registerinhalts mit einem Zeitstempel."
                                         }
                                     ]
                                 }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"4",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Die registerführende Stelle muss sicherstellen, dass Umtragungen eindeutig sind, innerhalb einer angemessenen Zeit erfolgen und die Transaktion auf dem Aufzeichnungssystem nicht wieder ungültig werden kann."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"5",
+                            "content":[
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Hat die registerführende Stelle eine Änderung des Registerinhalts ohne eine Weisung nach Absatz 1 oder ohne die Zustimmung des Emittenten nach Absatz 2 vorgenommen, so muss sie die Änderung unverzüglich rückgängig machen."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die Rechte aus der Verordnung (EU) 2016/679, insbesondere deren Artikel 17, bleiben unberührt."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2243,56 +2244,56 @@
                     "ordinal": "19",
                     "title": "Registerauszug",
                     "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"TextSpan",
+                                    "content":"Die registerführende Stelle hat dem Inhaber eines einzeln eingetragenen Kryptowertpapiers auf Verlangen einen Registerauszug in Textform zur Verfügung zu stellen, sofern dies zur Wahrnehmung seiner Rechte erforderlich ist."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Ist der Inhaber eines einzeln eingetragenen Kryptowertpapiers ein Verbraucher, so hat die registerführende Stelle dem Inhaber zu folgenden Zeitpunkten einen Registerauszug in Textform zur Verfügung zu stellen:"
+                                },
+                                {
+                                    "type":"Enumeration",
                                     "ordinal":"1",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die registerführende Stelle hat dem Inhaber eines einzeln eingetragenen Kryptowertpapiers auf Verlangen einen Registerauszug in Textform zur Verfügung zu stellen, sofern dies zur Wahrnehmung seiner Rechte erforderlich ist."
+                                            "content":"nach Eintragung eines Kryptowertpapiers in das Register zugunsten des Inhabers,"
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Enumeration",
                                     "ordinal":"2",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Ist der Inhaber eines einzeln eingetragenen Kryptowertpapiers ein Verbraucher, so hat die registerführende Stelle dem Inhaber zu folgenden Zeitpunkten einen Registerauszug in Textform zur Verfügung zu stellen:"
-                                        },
+                                            "content":"bei jeder Veränderung des Registerinhalts, die den Inhaber betrifft, und"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"3",
+                                    "content":[
                                         {
-                                            "type":"Enumeration",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"nach Eintragung eines Kryptowertpapiers in das Register zugunsten des Inhabers,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"bei jeder Veränderung des Registerinhalts, die den Inhaber betrifft, und"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"3",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"einmal jährlich."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"einmal jährlich."
                                         }
                                     ]
                                 }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2300,59 +2301,143 @@
                     "ordinal": "20",
                     "title": "Veröffentlichung im Bundesanzeiger",
                     "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"1",
                                     "content":[
                                         {
-                                            "type":"Sentence",
+                                            "type":"TextSpan",
+                                            "content":"Der Emittent muss unverzüglich folgende Veröffentlichungen im Bundesanzeiger veranlassen:"
+                                        },
+                                        {
+                                            "type":"Enumeration",
                                             "ordinal":"1",
                                             "content":[
                                                 {
                                                     "type":"TextSpan",
-                                                    "content":"Der Emittent muss unverzüglich folgende Veröffentlichungen im Bundesanzeiger veranlassen:"
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"1",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"die Veröffentlichung der Eintragung eines Kryptowertpapiers in ein Kryptowertpapierregister sowie"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"2",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"die Veröffentlichung der Änderung der in Absatz 2 genannten Angaben eines eingetragenen Kryptowertpapiers."
-                                                        }
-                                                    ]
+                                                    "content":"die Veröffentlichung der Eintragung eines Kryptowertpapiers in ein Kryptowertpapierregister sowie"
                                                 }
                                             ]
                                         },
                                         {
-                                            "type":"Sentence",
+                                            "type":"Enumeration",
                                             "ordinal":"2",
                                             "content":[
                                                 {
                                                     "type":"TextSpan",
-                                                    "content":"Unverzüglich nach der jeweiligen Veröffentlichung hat der Emittent der Aufsichtsbehörde diese Veröffentlichung mitzuteilen."
+                                                    "content":"die Veröffentlichung der Änderung der in Absatz 2 genannten Angaben eines eingetragenen Kryptowertpapiers."
                                                 }
                                             ]
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"2",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Die Veröffentlichung im Bundesanzeiger hat folgende Angaben zu enthalten:"
+                                            "content":"Unverzüglich nach der jeweiligen Veröffentlichung hat der Emittent der Aufsichtsbehörde diese Veröffentlichung mitzuteilen."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Die Veröffentlichung im Bundesanzeiger hat folgende Angaben zu enthalten:"
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"den Emittenten,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Informationen zum Kryptowertpapierregister,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"3",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"die registerführende Stelle,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"4",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"den wesentlichen Inhalt des Rechts einschließlich einer eindeutigen Kennnummer und der Kennzeichnung als Wertpapier,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"5",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"das Datum der Eintragung des Kryptowertpapiers in das Kryptowertpapierregister sowie im Fall einer Änderung das Datum der Änderung und"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"6",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"ob es sich um eine Eintragung oder um die Änderung der Angaben nach den Nummern 2 bis 4 handelt."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"3",
+                            "content":[
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die Aufsichtsbehörde führt über die ihr nach Absatz 1 Satz 2 in Verbindung mit Satz 1 Nummer 1 mitgeteilten Kryptowertpapiere eine öffentliche Liste im Internet."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Sentence",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"Die Liste enthält zu jedem Kryptowertpapier jeweils folgende Angaben:"
                                         },
                                         {
                                             "type":"Enumeration",
@@ -2367,16 +2452,6 @@
                                         {
                                             "type":"Enumeration",
                                             "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Informationen zum Kryptowertpapierregister,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"3",
                                             "content":[
                                                 {
                                                     "type":"TextSpan",
@@ -2386,102 +2461,28 @@
                                         },
                                         {
                                             "type":"Enumeration",
+                                            "ordinal":"3",
+                                            "content":[
+                                                {
+                                                    "type":"TextSpan",
+                                                    "content":"das Datum der Eintragung des Kryptowertpapiers in das Kryptowertpapierregister sowie"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type":"Enumeration",
                                             "ordinal":"4",
                                             "content":[
                                                 {
                                                     "type":"TextSpan",
-                                                    "content":"den wesentlichen Inhalt des Rechts einschließlich einer eindeutigen Kennnummer und der Kennzeichnung als Wertpapier,"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"5",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"das Datum der Eintragung des Kryptowertpapiers in das Kryptowertpapierregister sowie im Fall einer Änderung das Datum der Änderung und"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Enumeration",
-                                            "ordinal":"6",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"ob es sich um eine Eintragung oder um die Änderung der Angaben nach den Nummern 2 bis 4 handelt."
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type":"Section",
-                                    "ordinal":"3",
-                                    "content":[
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die Aufsichtsbehörde führt über die ihr nach Absatz 1 Satz 2 in Verbindung mit Satz 1 Nummer 1 mitgeteilten Kryptowertpapiere eine öffentliche Liste im Internet."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Die Liste enthält zu jedem Kryptowertpapier jeweils folgende Angaben:"
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"1",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"den Emittenten,"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"2",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"die registerführende Stelle,"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"3",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"das Datum der Eintragung des Kryptowertpapiers in das Kryptowertpapierregister sowie"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type":"Enumeration",
-                                                    "ordinal":"4",
-                                                    "content":[
-                                                        {
-                                                            "type":"TextSpan",
-                                                            "content":"bei nach Absatz 1 Satz 2 in Verbindung mit Satz 1 Nummer 2 mitgeteilten Änderungen das Datum und den wesentlichen Inhalt der jeweiligen Änderungen."
-                                                        }
-                                                    ]
+                                                    "content":"bei nach Absatz 1 Satz 2 in Verbindung mit Satz 1 Nummer 2 mitgeteilten Änderungen das Datum und den wesentlichen Inhalt der jeweiligen Änderungen."
                                                 }
                                             ]
                                         }
                                     ]
                                 }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2489,42 +2490,42 @@
                     "ordinal": "21",
                     "title": "Pflichten des Emittenten",
                     "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
-                                    "type":"Section",
+                                    "type":"TextSpan",
+                                    "content":"Der Emittent trifft die erforderlichen technischen und organisatorischen Maßnahmen, um die Integrität und die Authentizität der Kryptowertpapiere für die gesamte Dauer, für die das Kryptowertpapier eingetragen ist, zu gewährleisten."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"Sentence",
                                     "ordinal":"1",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Der Emittent trifft die erforderlichen technischen und organisatorischen Maßnahmen, um die Integrität und die Authentizität der Kryptowertpapiere für die gesamte Dauer, für die das Kryptowertpapier eingetragen ist, zu gewährleisten."
+                                            "content":"Ist die Erfüllung der nach diesem Gesetz für das Kryptowertpapierregister geltenden Anforderungen nicht mehr sichergestellt, hat der Emittent in angemessener Zeit Abhilfe zu schaffen."
                                         }
                                     ]
                                 },
                                 {
-                                    "type":"Section",
+                                    "type":"Sentence",
                                     "ordinal":"2",
                                     "content":[
                                         {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Ist die Erfüllung der nach diesem Gesetz für das Kryptowertpapierregister geltenden Anforderungen nicht mehr sichergestellt, hat der Emittent in angemessener Zeit Abhilfe zu schaffen."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Schafft er keine Abhilfe, so kann die Aufsichtsbehörde vom Emittenten verlangen, das Kryptowertpapier in ein anderes elektronisches Wertpapierregister zu übertragen."
-                                                }
-                                            ]
+                                            "type":"TextSpan",
+                                            "content":"Schafft er keine Abhilfe, so kann die Aufsichtsbehörde vom Emittenten verlangen, das Kryptowertpapier in ein anderes elektronisches Wertpapierregister zu übertragen."
                                         }
                                     ]
                                 }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2532,17 +2533,17 @@
                     "ordinal": "22",
                     "title": "Wechsel des Wertpapierregisters",
                     "content": [
-                                {
-                                    "type":"TextSpan",
-                                    "content":"Will der Emittent ein Kryptowertpapier in ein anderes elektronisches Wertpapierregister übertragen, benötigt er hierfür die Zustimmung sämtlicher Inhaber des Kryptowertpapiers oder die Zustimmung der Aufsichtsbehörde."
-                                }
+                        {
+                            "type":"TextSpan",
+                            "content":"Will der Emittent ein Kryptowertpapier in ein anderes elektronisches Wertpapierregister übertragen, benötigt er hierfür die Zustimmung sämtlicher Inhaber des Kryptowertpapiers oder die Zustimmung der Aufsichtsbehörde."
+                        }
                     ]
                 },
                 {
-            "type": "Paragraph",
-            "ordinal": "23",
-            "title": "Verordnungsermächtigung in Bezug auf Kryptowertpapierregister",
-            "content": [
+                    "type": "Paragraph",
+                    "ordinal": "23",
+                    "title": "Verordnungsermächtigung in Bezug auf Kryptowertpapierregister",
+                    "content": [
                         {
                             "type":"Section",
                             "ordinal":"1",
@@ -2870,8 +2871,8 @@
                                 }
                             ]
                         }
-            ]
-        }
+                    ]
+                }
             ]
         },
         {
@@ -2884,40 +2885,40 @@
                     "ordinal": "24",
                     "title": "Verfügungstransparenz",
                     "content": [
+                        {
+                            "type":"TextSpan",
+                            "content":"Folgende Verfügungen bedürfen vorbehaltlich der sonstigen gesetzlichen Anforderungen zu ihrer Wirksamkeit einer Eintragung oder Umtragung in dem elektronischen Wertpapierregister:"
+                        },
+                        {
+                            "type":"Enumeration",
+                            "ordinal":"1",
+                            "content":[
                                 {
                                     "type":"TextSpan",
-                                    "content":"Folgende Verfügungen bedürfen vorbehaltlich der sonstigen gesetzlichen Anforderungen zu ihrer Wirksamkeit einer Eintragung oder Umtragung in dem elektronischen Wertpapierregister:"
-                                },
-                                {
-                                    "type":"Enumeration",
-                                    "ordinal":"1",
-                                    "content":[
-                                        {
-                                            "type":"TextSpan",
-                                            "content":"Verfügungen über ein elektronisches Wertpapier,"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type":"Enumeration",
-                                    "ordinal":"2",
-                                    "content":[
-                                        {
-                                            "type":"TextSpan",
-                                            "content":"Verfügungen über ein Recht aus einem elektronischen Wertpapier oder über ein Recht an einem solchen Recht oder"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type":"Enumeration",
-                                    "ordinal":"3",
-                                    "content":[
-                                        {
-                                            "type":"TextSpan",
-                                            "content":"Verfügungen über ein Recht an einem elektronischen Wertpapier oder über ein Recht an einem solchen Recht."
-                                        }
-                                    ]
+                                    "content":"Verfügungen über ein elektronisches Wertpapier,"
                                 }
+                            ]
+                        },
+                        {
+                            "type":"Enumeration",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Verfügungen über ein Recht aus einem elektronischen Wertpapier oder über ein Recht an einem solchen Recht oder"
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Enumeration",
+                            "ordinal":"3",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Verfügungen über ein Recht an einem elektronischen Wertpapier oder über ein Recht an einem solchen Recht."
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -2925,56 +2926,17 @@
                     "ordinal": "25",
                     "title": "Übereignung",
                     "content": [
-                                {
-                                    "type":"Section",
-                                    "ordinal":"1",
-                                    "content":[
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"1",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Zur Übertragung des Eigentums an einem elektronischen Wertpapier ist es erforderlich, dass das elektronische Wertpapier auf Weisung des Berechtigten auf den Erwerber umgetragen wird und beide sich darüber einig sind, dass das Eigentum übergehen soll."
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type":"Sentence",
-                                            "ordinal":"2",
-                                            "content":[
-                                                {
-                                                    "type":"TextSpan",
-                                                    "content":"Bis zur Umtragung auf den Erwerber verliert der Berechtigte sein Eigentum nicht."
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type":"Section",
-                                    "ordinal":"1",
-                                    "content":[
-                                        {
-                                            "type":"TextSpan",
-                                            "content":"Das Recht aus dem Wertpapier wird mit der Übereignung des elektronischen Wertpapiers nach Absatz 1 übertragen."
-                                        }
-                                    ]
-                                }
-                    ]
-                },
-                {
-                    "type": "Paragraph",
-                    "ordinal": "26",
-                    "title": "Gutgläubiger Erwerb",
-                    "content": [
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
                                 {
                                     "type":"Sentence",
                                     "ordinal":"1",
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Zugunsten desjenigen, der auf Grund eines Rechtsgeschäfts in ein elektronisches Wertpapierregister eingetragen wird, gilt der Inhalt des elektronischen Wertpapierregisters als vollständig und richtig sowie der Inhaber als Berechtigter, es sei denn, dass dem Erwerber zum Zeitpunkt seiner Eintragung etwas anderes bekannt oder infolge grober Fahrlässigkeit unbekannt ist."
+                                            "content":"Zur Übertragung des Eigentums an einem elektronischen Wertpapier ist es erforderlich, dass das elektronische Wertpapier auf Weisung des Berechtigten auf den Erwerber umgetragen wird und beide sich darüber einig sind, dass das Eigentum übergehen soll."
                                         }
                                     ]
                                 },
@@ -2984,33 +2946,72 @@
                                     "content":[
                                         {
                                             "type":"TextSpan",
-                                            "content":"Eine Verfügungsbeschränkung im Sinne des § 13 Absatz 2 Satz 1 Nummer 1 oder des § 17 Absatz 2 Satz 1 Nummer 1 ist dem Erwerber gegenüber nur wirksam, wenn sie im elektronischen Wertpapierregister eingetragen ist oder dem Erwerber bekannt ist."
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type":"Sentence",
-                                    "ordinal":"3",
-                                    "content":[
-                                        {
-                                            "type":"TextSpan",
-                                            "content":"Die Sätze 1 und 2 sind nicht anzuwenden auf die Angaben, die unter § 13 Absatz 2 Satz 3 und § 17 Absatz 2 Satz 3 fallen."
+                                            "content":"Bis zur Umtragung auf den Erwerber verliert der Berechtigte sein Eigentum nicht."
                                         }
                                     ]
                                 }
+                            ]
+                        },
+                        {
+                            "type":"Section",
+                            "ordinal":"1",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Das Recht aus dem Wertpapier wird mit der Übereignung des elektronischen Wertpapiers nach Absatz 1 übertragen."
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
-            "type": "Paragraph",
-            "ordinal": "27",
-            "title": "Eigentumsvermutung für den Inhaber",
-            "content": [
+                    "type": "Paragraph",
+                    "ordinal": "26",
+                    "title": "Gutgläubiger Erwerb",
+                    "content": [
+                        {
+                            "type":"Sentence",
+                            "ordinal":"1",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Zugunsten desjenigen, der auf Grund eines Rechtsgeschäfts in ein elektronisches Wertpapierregister eingetragen wird, gilt der Inhalt des elektronischen Wertpapierregisters als vollständig und richtig sowie der Inhaber als Berechtigter, es sei denn, dass dem Erwerber zum Zeitpunkt seiner Eintragung etwas anderes bekannt oder infolge grober Fahrlässigkeit unbekannt ist."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Sentence",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Eine Verfügungsbeschränkung im Sinne des § 13 Absatz 2 Satz 1 Nummer 1 oder des § 17 Absatz 2 Satz 1 Nummer 1 ist dem Erwerber gegenüber nur wirksam, wenn sie im elektronischen Wertpapierregister eingetragen ist oder dem Erwerber bekannt ist."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Sentence",
+                            "ordinal":"3",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Die Sätze 1 und 2 sind nicht anzuwenden auf die Angaben, die unter § 13 Absatz 2 Satz 3 und § 17 Absatz 2 Satz 3 fallen."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Paragraph",
+                    "ordinal": "27",
+                    "title": "Eigentumsvermutung für den Inhaber",
+                    "content": [
                         {
                             "type":"TextSpan",
                             "content":"Sofern dieses Gesetz nichts anderes vorsieht, wird zugunsten des Inhabers eines elektronischen Wertpapiers vermutet, dass er für die Dauer seiner Eintragung als Inhaber Eigentümer des Wertpapiers ist."
                         }
-            ]
-        }
+                    ]
+                }
             ]
         },
         {
@@ -3031,10 +3032,10 @@
                     "content": []
                 },
                 {
-            "type": "Paragraph",
-            "ordinal": "30",
-            "title": "Außerordentliche Kündigung",
-            "content": [
+                    "type": "Paragraph",
+                    "ordinal": "30",
+                    "title": "Außerordentliche Kündigung",
+                    "content": [
                         {
                             "type":"Sentence",
                             "ordinal":"1",
@@ -3055,8 +3056,8 @@
                                 }
                             ]
                         }
-            ]
-        }
+                    ]
+                }
             ]
         },
         {
@@ -3065,222 +3066,222 @@
             "ordinal": "6",
             "content": [
                 {
-            "type": "Paragraph",
-            "ordinal": "31",
-            "title": "Bußgeldvorschriften",
-            "content": [
-                {
-                    "type":"Section",
-                    "ordinal":"1",
-                    "content":[
+                    "type": "Paragraph",
+                    "ordinal": "31",
+                    "title": "Bußgeldvorschriften",
+                    "content": [
                         {
-                            "type":"TextSpan",
-                            "content":"Ordnungswidrig handelt, wer"
-                        },
-                        {
-                            "type":"Enumeration",
+                            "type":"Section",
                             "ordinal":"1",
                             "content":[
                                 {
                                     "type":"TextSpan",
-                                    "content":"entgegen § 20 Absatz 1 eine Veröffentlichung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig vornimmt oder eine Mitteilung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig macht oder"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"2",
-                            "content":[
+                                    "content":"Ordnungswidrig handelt, wer"
+                                },
                                 {
-                                   "type":"TextSpan",
-                                   "content":"einer vollziehbaren Anordnung nach § 21 Absatz 2 Satz 2 zuwiderhandelt." 
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type":"Section",
-                    "ordinal":"2",
-                    "content":[
-                        {
-                            "type":"TextSpan",
-                            "content":"Ordnungswidrig handelt, wer vorsätzlich oder fahrlässig"
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"1",
-                            "content":[
+                                    "type":"Enumeration",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 20 Absatz 1 eine Veröffentlichung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig vornimmt oder eine Mitteilung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig macht oder"
+                                        }
+                                    ]
+                                },
                                 {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 7 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 3 oder § 23 Absatz 1 Satz 1 Nummer 4, ein Register nicht oder nicht richtig führt,"
+                                    "type":"Enumeration",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"einer vollziehbaren Anordnung nach § 21 Absatz 2 Satz 2 zuwiderhandelt."
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "type":"Enumeration",
+                            "type":"Section",
                             "ordinal":"2",
                             "content":[
                                 {
                                     "type":"TextSpan",
-                                    "content":"entgegen § 7 Absatz 2 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 6 oder § 23 Absatz 1 Satz 1 Nummer 5 nicht sicherstellt, dass eine Eintragung oder Umtragung in der dort genannten Weise erfolgt"
+                                    "content":"Ordnungswidrig handelt, wer vorsätzlich oder fahrlässig"
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"1",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 7 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 3 oder § 23 Absatz 1 Satz 1 Nummer 4, ein Register nicht oder nicht richtig führt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"2",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 7 Absatz 2 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 6 oder § 23 Absatz 1 Satz 1 Nummer 5 nicht sicherstellt, dass eine Eintragung oder Umtragung in der dort genannten Weise erfolgt"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"3",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 7 Absatz 3 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 7 oder § 23 Absatz 1 Satz 1 Nummer 6 eine dort genannte Maßnahme nicht, nicht richtig oder nicht rechtzeitig trifft,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"4",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 7 Absatz 3 Satz 3, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 7 oder § 23 Absatz 1 Satz 1 Nummer 6 nicht sicherstellt, dass der dort genannte Gesamtbestand nicht verändert wird,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"5",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 10 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8, nicht sicherstellt, dass die Teilnehmer Einsicht nehmen können,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"6",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 10 Absatz 2 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8 Einsicht nicht oder nicht rechtzeitig gewährt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"7",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 10 Absatz 3 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8 eine Auskunft erteilt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"8",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 12 Absatz 4 eine Anzeige nicht, nicht richtig oder nicht rechtzeitig erstattet,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"9",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 13 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 4, oder entgegen § 17 Absatz 1 nicht sicherstellt, dass ein dort genanntes Register die dort genannten Angaben enthält,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"10",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 13 Absatz 3, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 4, oder entgegen § 17 Absatz 3 nicht sicherstellt, dass die Angaben in der dort genannten Weise verknüpft sind,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"11",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 14 Absatz 1 oder 2 oder § 18 Absatz 1 oder 2 eine Änderung oder Löschung vornimmt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"12",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 14 Absatz 4 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 11 oder entgegen § 18 Absatz 4 in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Nummer 11 nicht sicherstellt, dass eine Umtragung oder Transaktion eine dort genannte Anforderung erfüllt,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"13",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 14 Absatz 5 Satz 1 oder entgegen § 18 Absatz 5 Satz 1, auch in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Satz 1 Nummer 5, eine Änderung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig rückgängig macht,"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"14",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 16 Absatz 1 ein Kryptowertpapierregister nicht richtig führt oder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"Enumeration",
+                                    "ordinal":"15",
+                                    "content":[
+                                        {
+                                            "type":"TextSpan",
+                                            "content":"entgegen § 19, auch in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Satz 1 Nummer 29, einen Registerauszug nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig zur Verfügung stellt."
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "type":"Enumeration",
+                            "type":"Section",
                             "ordinal":"3",
                             "content":[
                                 {
                                     "type":"TextSpan",
-                                    "content":"entgegen § 7 Absatz 3 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 7 oder § 23 Absatz 1 Satz 1 Nummer 6 eine dort genannte Maßnahme nicht, nicht richtig oder nicht rechtzeitig trifft,"
+                                    "content":"Die Ordnungswidrigkeit kann mit einer Geldbuße bis zu einhunderttausend Euro geahndet werden."
                                 }
                             ]
                         },
                         {
-                            "type":"Enumeration",
+                            "type":"Section",
                             "ordinal":"4",
                             "content":[
                                 {
                                     "type":"TextSpan",
-                                    "content":"entgegen § 7 Absatz 3 Satz 3, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 7 oder § 23 Absatz 1 Satz 1 Nummer 6 nicht sicherstellt, dass der dort genannte Gesamtbestand nicht verändert wird,"
+                                    "content":"Verwaltungsbehörde im Sinne des § 36 Absatz 1 Nummer 1 des Gesetzes über Ordnungswidrigkeiten ist die Bundesanstalt für Finanzdienstleistungsaufsicht."
                                 }
                             ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"5",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 10 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8, nicht sicherstellt, dass die Teilnehmer Einsicht nehmen können,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"6",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 10 Absatz 2 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8 Einsicht nicht oder nicht rechtzeitig gewährt,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"7",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 10 Absatz 3 Satz 1 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 5 oder § 23 Absatz 1 Satz 1 Nummer 8 eine Auskunft erteilt,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"8",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 12 Absatz 4 eine Anzeige nicht, nicht richtig oder nicht rechtzeitig erstattet,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"9",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 13 Absatz 1, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 4, oder entgegen § 17 Absatz 1 nicht sicherstellt, dass ein dort genanntes Register die dort genannten Angaben enthält,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"10",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 13 Absatz 3, auch in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 4, oder entgegen § 17 Absatz 3 nicht sicherstellt, dass die Angaben in der dort genannten Weise verknüpft sind,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"11",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 14 Absatz 1 oder 2 oder § 18 Absatz 1 oder 2 eine Änderung oder Löschung vornimmt,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"12",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 14 Absatz 4 in Verbindung mit einer Rechtsverordnung nach § 15 Absatz 1 Satz 1 Nummer 11 oder entgegen § 18 Absatz 4 in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Nummer 11 nicht sicherstellt, dass eine Umtragung oder Transaktion eine dort genannte Anforderung erfüllt,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"13",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 14 Absatz 5 Satz 1 oder entgegen § 18 Absatz 5 Satz 1, auch in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Satz 1 Nummer 5, eine Änderung nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig rückgängig macht,"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"14",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 16 Absatz 1 ein Kryptowertpapierregister nicht richtig führt oder"
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Enumeration",
-                            "ordinal":"15",
-                            "content":[
-                                {
-                                    "type":"TextSpan",
-                                    "content":"entgegen § 19, auch in Verbindung mit einer Rechtsverordnung nach § 23 Absatz 1 Satz 1 Nummer 29, einen Registerauszug nicht, nicht richtig, nicht vollständig oder nicht rechtzeitig zur Verfügung stellt."
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type":"Section",
-                    "ordinal":"3",
-                    "content":[
-                        {
-                            "type":"TextSpan",
-                            "content":"Die Ordnungswidrigkeit kann mit einer Geldbuße bis zu einhunderttausend Euro geahndet werden."
-                        }
-                    ]
-                },
-                {
-                    "type":"Section",
-                    "ordinal":"4",
-                    "content":[
-                        {
-                            "type":"TextSpan",
-                            "content":"Verwaltungsbehörde im Sinne des § 36 Absatz 1 Nummer 1 des Gesetzes über Ordnungswidrigkeiten ist die Bundesanstalt für Finanzdienstleistungsaufsicht."
                         }
                     ]
                 }
-            ]
-        }
             ]
         },
         {
@@ -3332,32 +3333,32 @@
                     ]
                 },
                 {
-            "type": "Paragraph",
-            "ordinal": "33",
-            "title": "Übergangsregelung",
-            "content": [
-                {
-                    "type":"Sentence",
-                    "ordinal":"1",
-                    "content":[
+                    "type": "Paragraph",
+                    "ordinal": "33",
+                    "title": "Übergangsregelung",
+                    "content": [
                         {
-                            "type":"TextSpan",
-                            "content":"§ 6 Absatz 3 ist auch auf Wertpapiere anzuwenden, die vor dem 10. Juni 2021 begeben wurden."
-                        }
-                    ]
-                },
-                {
-                    "type":"Sentence",
-                    "ordinal":"2",
-                    "content":[
+                            "type":"Sentence",
+                            "ordinal":"1",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"§ 6 Absatz 3 ist auch auf Wertpapiere anzuwenden, die vor dem 10. Juni 2021 begeben wurden."
+                                }
+                            ]
+                        },
                         {
-                            "type":"TextSpan",
-                            "content":"Ein nach den Emissionsbedingungen bestehender Anspruch auf Ausreichung einzelner Wertpapierurkunden bleibt von einer Ersetzung nach § 6 Absatz 3 Satz 1 unberührt."
+                            "type":"Sentence",
+                            "ordinal":"2",
+                            "content":[
+                                {
+                                    "type":"TextSpan",
+                                    "content":"Ein nach den Emissionsbedingungen bestehender Anspruch auf Ausreichung einzelner Wertpapierurkunden bleibt von einer Ersetzung nach § 6 Absatz 3 Satz 1 unberührt."
+                                }
+                            ]
                         }
                     ]
                 }
-            ]
-        }
             ]
         }
     ]

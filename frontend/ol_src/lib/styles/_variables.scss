@@ -1,0 +1,29 @@
+$primary: #112896;
+$accent: #ff1271;
+
+$off-white-color: #fcfafc;
+$off-black-color: #222222;
+$success-color: #00aa5a;
+$warning-color: #ffaa00;
+$error-color: #dc0028;
+$table-color: #999999;
+
+$sans-serif: "Mulish", sans-serif;
+$serif: "EB Garamond", serif;
+
+:root {
+    --primary: #{$primary};
+    --accent: #{$accent};
+    --off-white: #{$off-white-color};
+    --off-black: #{$off-black-color};
+    --success-color: #{$success-color};
+    --warning-color: #{$warning-color};
+    --error-color: #{$error-color};
+    --sans-serif: #{$sans-serif};
+    --serif: #{$serif};
+    --background: #{$off-white-color};
+    --foreground: #{$off-black-color};
+    --table: #{$table-color};
+}
+
+$border-radius: 5px;

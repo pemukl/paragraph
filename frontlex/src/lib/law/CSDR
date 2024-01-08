@@ -1,0 +1,133 @@
+{
+    "type": "Law",
+    "title": "VERORDNUNG (EU) Nr. 909/2014 DES EUROPÄISCHEN PARLAMENTS UND DES RATES vom 23. Juli 2014 zur Verbesserung der Wertpapierlieferungen und -abrechnungen in der Europäischen Union und über Zentralverwahrer sowie zur Änderung der Richtlinien 98/26/EG und 2014/65/EU und der Verordnung (EU) Nr. 236/2012",
+    "abbreviation": "Zentralverwahrerverordnung",
+    "content": [
+        {
+            "type": "Area",
+            "title": "Zulassungsvoraussetzungen und -Verfahrenfür Zentralverwahrern",
+            "ordinal": "2",
+            "content": [
+                {
+                    "type": "Paragraph",
+                    "ordinal": "16",
+                    "title": "Zulassung eines Zentralverwahrers",
+                    "content": [
+                        {
+                            "type": "Section",
+                            "ordinal": "1",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Jede juristische Person, die unter die Begriffsbestimmung für "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Zentralverwahrer",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " fällt, muss von der "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "zuständigen Behörde",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " des Mitgliedstaats, in dem sie ihren Sitz hat, vor Aufnahme ihrer Tätigkeiten zugelassen werden."
+                                }                                  
+                            ]                        
+                        },
+                        {
+                            "type": "Section",
+                            "ordinal": "2",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "In der Zulassung werden die Kerndienstleistungen nach "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Abschnitt A des Anhangs",
+                                    "url": "EU-VO-909/2014"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " und zulässige nichtbankartige Nebendienstleistungen nach ."
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Abschnitt B des Anhangs",
+                                    "url": "EU-VO-909/2014"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " genannt, die der "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Zentralverwahrer",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " erbringen darf."
+                                },
+                            ]                        
+                        },
+                        {
+                            "type": "Section",
+                            "ordinal": "3",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Ein "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Zentralverwahrer",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " muss zu jedem Zeitpunkt die für die Zulassung erforderlichen Voraussetzungen erfüllen."
+                                }
+                            ]                        
+                        },
+                        {
+                            "type": "Section",
+                            "ordinal": "4",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Ein "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "Zentralverwahrer",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " sowie seine unabhängigen Abschlussprüfer unterrichten die "
+                                },
+                                {
+                                    "type": "Reference",
+                                    "text": "zuständige Behörde",
+                                    "url": "DEF"
+                                },
+                                {
+                                    "type": "TextSpan",
+                                    "content": " unverzüglich über alle wesentlichen Änderungen, die die Erfüllung der für die Zulassung erforderlichen Voraussetzungen beeinflussen."
+                                }
+                            ]                        
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

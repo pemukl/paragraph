@@ -1,0 +1,145 @@
+{
+    "type": "Law",
+    "title": "Bürgerliches Gesetzbuch",
+    "abbreviation": "BGB",
+    "content": [
+        {
+            "type":"Paragraph",
+            "ordinal": "88",
+            "title": "Kirchliche Stiftungen",
+            "content": [
+                {
+                    "type":"Sentence",
+                    "ordinal":"1",
+                    "content":[
+                        {
+                            "type":"TextSpan",
+                            "content":"Die Vorschriften der Landesgesetze über die kirchlichen Stiftungen bleiben unberührt, insbesondere die Vorschriften zur Beteiligung, Zuständigkeit und Anfallsberechtigung der Kirchen."
+                        }
+                    ]
+                },
+                {
+                    "type":"Sentence",
+                    "ordinal":"2",
+                    "content":[
+                        {
+                            "type":"TextSpan",
+                            "content":"Dasselbe gilt entsprechend für Stiftungen, die nach den Landesgesetzen kirchlichen Stiftungen gleichgestellt sind."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "ordinal": "89",
+            "title": "Haftung für Organe; Insolvenz",
+            "content": [
+                {
+                    "type": "Section",
+                    "ordinal": "1",
+                    "content": [
+                        {
+                            "type": "TextSpan",
+                            "content": "Die Vorschrift des "
+                        },
+                        {
+                            "type":"Reference",
+                            "text": "§ 31",
+                            "url":"DE-BGB-Para31"
+                        },
+                        {
+                            "type": "TextSpan",
+                            "content": " findet auf den Fiskus sowie auf die Körperschaften, Stiftungen und Anstalten des öffentlichen Rechts entsprechende Anwendung."
+                        }
+                    ]
+                },
+                {
+                    "type": "Section",
+                    "ordinal": "2",
+                    "content": [
+                        {
+                            "type": "TextSpan",
+                            "content": "Das Gleiche gilt, soweit bei Körperschaften, Stiftungen und Anstalten des öffentlichen Rechts das Insolvenzverfahren zulässig ist, von der Vorschrift des "
+                        },
+                        {
+                            "type":"Reference",
+                            "text": "§ 42 Abs. 2",
+                            "url": "DE-BGB-Para42-Sec2"
+                        },
+                        {
+                            "type": "TextSpan",
+                            "content": "."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Area",
+            "title": "Sachen und Tiere",
+            "ordinal": "2",
+            "content": [
+                {
+                    "type": "Paragraph",
+                    "ordinal": "90",
+                    "title": "Begriff der Sache",
+                    "content": [
+                        {
+                            "type": "TextSpan",
+                            "content": "Sachen im Sinne des Gesetzes sind nur körperliche Gegenstände."
+                        }
+                    ]
+                },
+                {
+                    "type": "Paragraph",
+                    "ordinal": "90a",
+                    "title": "Tiere",
+                    "content": [
+                        {
+                            "type":"Sentence",
+                            "ordinal":"1",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Tiere sind keine Sachen."
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Sentence",
+                            "ordinal":"2",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Sie werden durch besondere Gesetze geschützt."
+                                }
+                            ] 
+                        },
+                        {
+                            "type":"Sentence",
+                            "ordinal":"3",
+                            "content": [
+                                {
+                                    "type": "TextSpan",
+                                    "content": "Auf sie sind die für Sachen geltenden Vorschriften entsprechend anzuwenden, soweit nicht etwas anderes bestimmt ist."
+                                }
+                            ] 
+                        }
+                    ]
+                },
+                {
+                    "type": "Paragraph",
+                    "ordinal": "91",
+                    "title": "Vertretbare Sachen",
+                    "content": [
+                        {
+                        "type": "TextSpan",
+                        "content": "Vertretbare Sachen im Sinne des Gesetzes sind bewegliche Sachen, die im Verkehr nach Zahl, Maß oder Gewicht bestimmt zu werden pflegen."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

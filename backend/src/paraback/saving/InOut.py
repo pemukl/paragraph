@@ -6,7 +6,7 @@ from pymongo import MongoClient
 class InOut:
     def __init__(self):
 
-        connection_string = os.getenv('MONGO_LAWDB')
+        connection_string = os.getenv('MONGO_URI')
         if connection_string is None:
             connection_string = "mongodb://root:publicpw@localhost:27017"
         self.connection_string = connection_string

@@ -6,6 +6,8 @@ import tqdm
 import typer
 
 from paraback import __title__ , __version__, util
+from paraback.scraping.nltk_downloader import download_punkt
+
 
 from pymongo import MongoClient
 
@@ -52,7 +54,7 @@ def main(config_file: str = ConfigOption, version: bool = VersionOption):
     """
     config = util.load_config(config_file)
     util.logging_setup(config)
-    logger.info("All set up. Let's get going!")
+    logger.info("All set up! Let's get going!")
 
     links = get_all_links()[:10]
 

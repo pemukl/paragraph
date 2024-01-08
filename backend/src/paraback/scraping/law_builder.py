@@ -46,6 +46,7 @@ def ordinal(parser):
 
 class LawBuilder:
 
+
     def build_law(html_content):
         soup = bs4.BeautifulSoup(html_content, "html.parser")
         abkspans = soup.find_all("span", {"class": "jnkurzueamtabk"})

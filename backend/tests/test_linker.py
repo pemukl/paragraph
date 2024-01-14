@@ -1,7 +1,8 @@
 import unittest
 
-from law_model import TextSpan, Link
-from linker import Linker, RegexLinker
+from paraback.models.law_model import TextSpan, Link
+from paraback.linking.linker import Linker
+from paraback.linking.regex_linker import RegexLinker
 
 
 class LinkerTest(unittest.TestCase):
@@ -23,7 +24,8 @@ class LinkerTest(unittest.TestCase):
 
     def test_finding(self):
         span = TextSpan(parent_id="DE-eWpG-Par28-Sec2-Enum4-Litb-SubLit1a", text="Im Fall einer Sammeleintragung § 6 Absatz 2 Satz 3 als Inhaber.")
-        RegexLinker.link(span)
+        linker = RegexLinker()
+        linker.link(span)
         self.assertEqual(1, len(span.links))
         self.assertEqual("DE-eWpG-Par6-Sec2-Sent3", span.links[0].url)
         self.assertEqual(31, int(span.links[0].start_idx))

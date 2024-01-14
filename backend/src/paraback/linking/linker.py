@@ -2,25 +2,28 @@ import logging
 import os.path
 import pickle
 import re
+from abc import ABC, abstractmethod
 
-from paraback.models.law_model import Law, Link
+from paraback.models.law_model import Law, Link, TextSpan
 from paraback.util import get_data_path, suppress_stdout
 from tqdm import tqdm
 
 
-class Linker():
+class Linker(ABC):
 
     def link_all(self, law: Law):
         for span in law.get_textspans():
             self.link(span)
 
-    def link(self, span):
+    def link(self, span: TextSpan):
         shortlinks = self.extract_shortlinks(span)
         links = [Linker.short_to_long_link(shortlink, span) for shortlink in shortlinks]
         span.links = links
 
+    @abstractmethod
     def extract_shortlinks(self, span):
-        return []
+        pass
+
 
     @staticmethod
     def parse_link(string):
@@ -89,44 +92,3 @@ class Linker():
                     parent_id=shortlink.parent_id)
 
 
-
-def main():
-    """ Main entry point of the app """
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.WARNING)
-
-    datapath = get_data_path()
-    sourcepath = os.path.join(datapath, "raw_jsons")
-    targetpath = os.path.join(datapath, "linked")
-
-    if not os.path.exists(targetpath):
-        os.makedirs(targetpath)
-
-    # iterate over all files in data/raw_jsons
-    targets = [f[:-5] for f in os.listdir(os.path.join(datapath, "raw_jsons")) if f.endswith(".json")]
-    #targets = ["eWpG"]
-
-    if len(targets) <= 10:
-        logger.setLevel(logging.DEBUG)
-
-    for target in (pbar := tqdm(targets)):
-        pbar.set_description(target.rjust(30))
-
-        with open(os.path.join(sourcepath, target + ".json")) as fi:
-            law = Law.model_validate_json(fi.read())
-
-        linker = RegexLinker()
-        linker.link_all(law)
-
-        filename = os.path.join(targetpath, target + ".json")
-        if os.path.exists(filename):
-            os.remove(filename)
-        with open(filename, "w") as fi:
-            json = law.model_dump_json(exclude_none=True, indent=2)
-            fi.write(json)
-
-
-if __name__ == "__main__":
-    """ This is executed when run from the command line """
-    main()

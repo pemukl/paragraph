@@ -3,7 +3,7 @@ import os
 from pymongo import MongoClient
 
 
-class InOut:
+class MongoConnector:
     def __init__(self):
 
         connection_string = os.getenv('MONGO_LAWDB')

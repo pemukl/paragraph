@@ -1297,6 +1297,20 @@ slack = ["slack-sdk"]
 telegram = ["requests"]
 
 [[package]]
+name = "tqdm-loggable"
+version = "0.2"
+description = "TQDM progress bar helpers for logging and other headless application"
+optional = false
+python-versions = ">3.8"
+files = [
+    {file = "tqdm_loggable-0.2-py3-none-any.whl", hash = "sha256:9703046302b93a667166487759e6f3f49597e86c89eb132ba1f31caa07bf0941"},
+    {file = "tqdm_loggable-0.2.tar.gz", hash = "sha256:175abec3e1f63bbd2eac192fa5da075e80c7bb715d7ccf3cd1a29b7ab5af0617"},
+]
+
+[package.dependencies]
+tqdm = ">4.64"
+
+[[package]]
 name = "typer"
 version = "0.7.0"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
@@ -1460,4 +1474,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0873f8b3e4a986535fe9d70d80ee4e37cf1f7b8cc3da71fea856e4b4f985ca87"
+content-hash = "09d077e6de06c4c2896fa65eca2589d9221eaa367416725778a2f799ab656005"

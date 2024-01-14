@@ -1,16 +1,20 @@
+import datetime
 import logging
 import os
 import multiprocessing
-import tqdm
+
+from tqdm_loggable.auto import tqdm
+from tqdm_loggable.tqdm_logging import tqdm_logging
+
 
 import typer
 
-from paraback import __title__ , __version__, util
+from paraback import __title__ , util
 
 from pymongo import MongoClient
 
 from paraback.orchestrator import Orchestrator
-from paraback.scraping.downloader import get_all_links
+from paraback.scraping.scraper import Scraper
 
 logger = logging.getLogger('paraback')
 
@@ -22,7 +26,7 @@ app = typer.Typer(
 
 def version_callback(version: bool):
     if version:
-        typer.echo(f"{__title__} {__version__}")
+        typer.echo(f"{__title__}")
         raise typer.Exit()
 
 
@@ -52,20 +56,24 @@ def main(config_file: str = ConfigOption, version: bool = VersionOption):
     """
     config = util.load_config(config_file)
     util.logging_setup(config)
+    tqdm_logging.set_level(logging.INFO)
+
+    # Set the rate how often we update logs
+    # Defaults to 10 seconds - optional
+    tqdm_logging.set_log_rate(datetime.timedelta(seconds=5))
     logger.info("All set up. Let's get going!")
 
-    links = get_all_links()[:10]
+    links = Scraper.get_all_links()[:10]
+
 
     def process_link(link):
         orchestrator = Orchestrator(link)
         orchestrator.run()
-    print(links)
 
-    for link in tqdm.tqdm(links, total=len(links), desc="scraping laws"):
+    for link in (pbar:=tqdm(links, total=len(links))):
+        pbar.set_description(f"Processing link {str(link.split('/')[-2])[:10].ljust(10,' ')}")
         process_link(link)
 
-    #with multiprocessing.Pool() as p:
-    #    list(tqdm.tqdm(p.imap(process_link, links), total=len(links), desc="scraping laws"))
 
     logger.info("All done. Bye!")
 

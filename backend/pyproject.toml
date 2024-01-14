@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "paraback"
 version = "0.1.0"
-description = "backend parsing and linking laws"
+description = "Package for parsing and linking german laws"
 authors = ["Marc Schneider <marc@shnei.de>"]
 license = "Proprietary"
 packages = [{ include = "paraback", from = "src" }, ]

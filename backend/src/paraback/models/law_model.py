@@ -59,10 +59,9 @@ class JurModel(BaseModel):
         """get all textspans from content"""
         if (isinstance(self, TextSpan)):
             yield self
-        if (hasattr(self, "content")):
-            if (isinstance(self.content, list)):
-                for x in self.content:
-                    yield from x.get_textspans()
+        if (hasattr(self, "content") and isinstance(self.content, list)):
+            for x in self.content:
+                yield from x.get_textspans()
 
 
 class Link(JurModel):
@@ -82,7 +81,6 @@ class TextSpan(JurModel):
     type: Literal["TextSpan"] = "TextSpan"
     text: str
     links: Optional[List[Link]] = None
-
 
 class Sublitera(JurModel):
     type: Literal["SubLitera"] = "SubLitera"

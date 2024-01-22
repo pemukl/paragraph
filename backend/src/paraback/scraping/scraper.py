@@ -13,6 +13,8 @@ __author__ = "Marc Schneider"
 
 from tqdm_loggable.auto import tqdm
 
+class ParsingError(Exception):
+    pass
 
 data_path = os.path.join("/Users", "marc", "Code", "paragraph", "backend", "data")
 
@@ -32,7 +34,7 @@ class Scraper:
     def download_link(link):
         target = Scraper._landing_to_target(link)
         if target is None:
-            raise Exception("No target found for landing " + link)
+            raise ParsingError("No target found for landing " + link)
         return Scraper._download_target(target)
 
     @staticmethod

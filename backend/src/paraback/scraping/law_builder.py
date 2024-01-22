@@ -24,7 +24,7 @@ def ordinal(parser):
         ordinal = ordinal.replace("-", "–")
         ordinal = ordinal.replace(" ", "")
         ordinal = ordinal.replace(" ", "")
-        match = re.match(r"[^\da-zA-Z\(\)\.–•*▪ο□^α-ω]+$", ordinal)
+        match = re.match(r"[^\da-zA-Z().–•*▪□^α-ω]+$", ordinal)
         if match:
             logging.error("Suspicious char '" + match.string + "' in ordinal: " + ordinal)
         return ordinal
@@ -91,7 +91,7 @@ class LawBuilder:
         tit = next(x for x in parts[0].children if not isinstance(x, NavigableString))
         spans = tit.h2.find_all("span", recursive=False)
         if (len(spans) != 2):
-            raise Exception("Expected 2 spans in area, got " + str(len(spans)))
+            raise RuntimeError("Expected 2 spans in area, got " + str(len(spans)))
         ordinal = spans[0].text
         area = Area(
             title=spans[1].text,

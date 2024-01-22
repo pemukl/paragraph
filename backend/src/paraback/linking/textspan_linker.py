@@ -9,24 +9,25 @@ from paraback.util import get_data_path, suppress_stdout
 from tqdm import tqdm
 
 
-class Linker(ABC):
+class TextspanLinker(ABC):
 
-    def link_all(self, law: Law):
-        for span in law.get_textspans():
-            self.link(span)
+    def __init__(self, textspan: TextSpan):
+        self.textspan = textspan
+        self.confident = False
 
-    def link(self, span: TextSpan):
-        shortlinks = self.extract_shortlinks(span)
-        links = [Linker.short_to_long_link(shortlink, span) for shortlink in shortlinks]
-        span.links = links
+
+    def link(self):
+        shortlinks = self.extract_shortlinks()
+        links = [self.short_to_long_link(shortlink) for shortlink in shortlinks]
+        self.textspan.links = links
 
     @abstractmethod
-    def extract_shortlinks(self, span):
+    def extract_shortlinks(self):
         pass
 
 
     @staticmethod
-    def parse_link(string):
+    def parse_link_to_dict(string):
         res = {}
         parts = string.split("-")
 
@@ -70,10 +71,9 @@ class Linker(ABC):
             res.append("SubLit" + dic["sublit"])
         return "-".join(res)
 
-    @staticmethod
-    def short_to_long_link(shortlink, span):
-        context = Linker.parse_link(span.parent_id)
-        shorturl = Linker.parse_link(shortlink.url)
+    def short_to_long_link(self, shortlink):
+        context = TextspanLinker.parse_link_to_dict(self.textspan.parent_id)
+        shorturl = TextspanLinker.parse_link_to_dict(shortlink.url)
         res = {}
 
         keys = ["jurisdiction", "law", "par", "sec", "sent", "enum", "lit", "sublit"]
@@ -88,7 +88,9 @@ class Linker(ABC):
                 if key in shorturl:
                     res[key] = shorturl[key]
 
-        return Link(start_idx=shortlink.start_idx, stop_idx=shortlink.stop_idx, url=Linker.dict_to_link(res),
+        return Link(start_idx=shortlink.start_idx, stop_idx=shortlink.stop_idx, url=TextspanLinker.dict_to_link(res),
                     parent_id=shortlink.parent_id)
 
-
+    @classmethod
+    def set_law_name_searcher(cls, law_name_searcher):
+        cls.law_name_searcher = law_name_searcher

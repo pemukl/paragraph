@@ -1,4 +1,4 @@
-from paraback.linking.regex_linker import RegexLinker
+from paraback.linking.regex_ts_linker import RegexTSLinker
 from paraback.scraping.scraper import Scraper
 from paraback.scraping.law_builder import LawBuilder
 from paraback.saving.mongo_connector import MongoConnector
@@ -25,7 +25,7 @@ class Orchestrator():
         self.law = LawBuilder.build_law(self.html)
 
     def link(self):
-        linker = RegexLinker()
+        linker = RegexTSLinker()
         self.law_linked = linker.link_all(self.law)
 
     def store(self):

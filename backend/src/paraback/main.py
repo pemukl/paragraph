@@ -10,6 +10,7 @@ from tqdm_loggable.tqdm_logging import tqdm_logging
 import typer
 
 from paraback import __title__ , util
+from paraback.scraping.nltk_downloader import download_punkt
 
 from pymongo import MongoClient
 
@@ -134,7 +135,7 @@ def link():
         io.write(law)
 
 @app.command("eWpG")
-def eWpG():
+def ewpg():
     html = Scraper.download_link("https://www.gesetze-im-internet.de/ewpg/")
     law = LawBuilder.build_law(html)
     io = MongoConnector(collection="unlinked_laws")

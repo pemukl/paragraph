@@ -15,6 +15,19 @@ from tqdm import tqdm
 
 from contextvars import ContextVar
 
+ctx = ContextVar("context")
+
+class ThreadingLocalContextFilter(logging.Filter):
+    """
+    This is a filter which injects contextual information from `threading.local` (log_context_data) into the log.
+    """
+    def __init__(self, attributes):
+        super().__init__()
+        self.attributes = attributes
+
+    def filter(self, record):
+        setattr(record, "context", ctx.get())
+        return True
 
 def ordinal(parser):
     def get_ordinal(*args, **kwargs):

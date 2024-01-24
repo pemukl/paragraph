@@ -10,6 +10,7 @@ from tqdm_loggable.tqdm_logging import tqdm_logging
 import typer
 
 from paraback import __title__ , util
+from paraback.llmconnection.name_preprocessor import NamePreprocessor
 from paraback.scraping.nltk_downloader import download_punkt
 
 from pymongo import MongoClient
@@ -110,29 +111,37 @@ def scrape():
     htmls = (Scraper.download_link(link) for link in links)
     laws = (LawBuilder.build_law(html) for html in htmls)
 
-    io = MongoConnector(collection="unlinked_laws")
+    io = MongoConnector(db="unlinked_laws")
     for law in (pbar := tqdm(laws, desc='Scraping links', total=len(links))):
-        pbar.set_description(f"Downloading, Building and Saving '{law.stemmedabbreviation.ljust(15,' ')}'")
+        pbar.set_description(f"Downloading, Building and Saving '{law.stemmedabbreviation.ljust(25,' ')}'")
         if law.abbreviation.endswith("Prot"):
-            logger.warning(f"Skipping '{law.stemmedabbreviation}'")
+            logger.debug(f"Skipping '{law.stemmedabbreviation}'")
             continue
         io.write(law)
-        io.write_name(law)
+
+@app.command("find_names")
+def find_names():
+    laws = MongoConnector(db="unlinked_laws").read_important()
+    io = MongoConnector()
+    for law in tqdm(laws):
+        name_processor = NamePreprocessor(law)
+        variants = name_processor.get_variants()
+        variants_dict = {string: law.stemmedabbreviation for string in variants}
+        io.write_name(variants_dict)
 
 @app.command("link")
 def link():
-    io = MongoConnector(collection="laws")
-    names_dict = io.read_all_names()
-    stem_set = set(names_dict.values())
-
-    law_name_searcher = LawNameSearcher(names_dict)
-
-    for law in (pbar := tqdm(stem_set, desc='Linking laws', total=len(stem_set))):
-        pbar.set_description(f"Linking '{law.stemmedabbreviation.ljust(15,' ')}'")
+    io_in = MongoConnector(db="unlinked_laws", collection="de")
+    io_out = MongoConnector(db="laws", collection="de")
+    count = io_in.count_important()
+    target_laws = io_in.read_important()
+    law_name_searcher = LawNameSearcher()
+    for law in (pbar := tqdm(target_laws, desc='Linking laws', total=count)):
+        pbar.set_description(f"Linking '{law.stemmedabbreviation.ljust(25,' ')}'")
         linker = LawLinker(law)
         linker.set_law_name_searcher(law_name_searcher)
         linker.link()
-        io.write(law)
+        io_out.write(law)
 
 @app.command("eWpG")
 def ewpg():

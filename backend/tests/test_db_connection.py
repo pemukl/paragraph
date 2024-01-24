@@ -21,11 +21,6 @@ class LawBuilderTest(unittest.TestCase):
 
         assert(res.longname == law.longname)
 
-    def test_names_present(self):
-        io = MongoConnector()
-        res = io.read_all_names()
-        print(res)
-        assert "eWpG" in res
 
 
 if __name__ == '__main__':

@@ -15,10 +15,10 @@ from paraback.linking.textspan_linker import TextspanLinker
 class RegexTSLinker(TextspanLinker):
     keyword_patterns = None
     confident_pattern = None
+    law_name_searcher = None
 
 
     def __init__(self, *args, **kwargs):
-        self.law_name_searcher = None
         if RegexTSLinker.confident_pattern is None:
             keywords_par = r"§§|§|Paragraph|Paragraphen"
             keywords_sec = r"Absatz|Absatzes|Absätze|Absätzen|Abs\."
@@ -57,17 +57,12 @@ class RegexTSLinker(TextspanLinker):
         text = self.textspan.text
         self.confident = True
 
-        if (searcher := self.__class__.law_name_searcher) is not None:
-            law_names = searcher.contained_law_names(self.textspan)
-            if len(law_names) > 1:
-                self.confident = False
-            elif len(law_names) == 1:
-                print("Found law name: " + law_names[0])
+        externals = self.extract_external_links()
 
 
         levels = []
         multiple_kws = False
-        for i,kw in enumerate(RegexTSLinker.keyword_patterns):
+        for i, kw in enumerate(RegexTSLinker.keyword_patterns):
             if found := kw.findall(text):
                 if len(found) > 0:
                     levels.append(i)
@@ -80,8 +75,22 @@ class RegexTSLinker(TextspanLinker):
         if len(levels) > 1 and multiple_kws:
             self.confident = False
 
+        matches = self._get_matches()
 
-        return self._get_matches()
+        if len(matches) == len(externals) and all([match.url.startswith("Par") for match in matches]):
+            matches = sorted(matches, key=lambda x: x.start_idx)
+            externals = sorted(externals, key=lambda x: x.start_idx)
+
+            for match, external in zip(matches, externals):
+                match.url = external.url + "-" + match.url
+                match.start_idx = min(match.start_idx, external.start_idx)
+                match.stop_idx = max(match.stop_idx, external.stop_idx)
+                logger.debug(f"Found ext Link: {text[match.start_idx: match.stop_idx]} ({match.url})")
+        elif len(externals)>0:
+            matches.extend(externals)
+            logger.info("too hard to match externals and internals: " + text)
+
+        return matches
 
 
     def _get_matches(self):
@@ -91,7 +100,7 @@ class RegexTSLinker(TextspanLinker):
         matches = self.confident_pattern.finditer(text)
         for match in matches:
             res = []
-            if match.groups() == (None, None, None, None, None):
+            if match.groups()[:3] == (None, None, None):
                 continue
 
             if par := match.groups()[0]:
@@ -119,6 +128,7 @@ class RegexTSLinker(TextspanLinker):
 
             logging.debug("Found shortlink " + target + " in '" + self.textspan.text[start:end] + "' of\n-----" + self.textspan.text)
             links.append(Link(start_idx=start, stop_idx=end, url=target, parent_id=self.textspan.id))
+
         return links
 
 

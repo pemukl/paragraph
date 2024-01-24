@@ -1,3 +1,4 @@
+from paraback.linking.law_name_searcher import LawNameSearcher
 from paraback.linking.regex_ts_linker import RegexTSLinker
 from paraback.linking.openai_ts_linker import OpenAITSLinker
 
@@ -15,7 +16,7 @@ class LawLinker:
 
     def link(self):
         if not LawLinker.law_name_searcher:
-            raise LawNameSearcherMissingException("LawNameSearcher not set")
+            self.law_name_searcher = LawNameSearcher()
 
         unclear = []
         for span in self.law.get_textspans():

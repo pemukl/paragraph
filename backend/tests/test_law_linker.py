@@ -13,7 +13,6 @@ class LawLinkerTest(unittest.TestCase):
         law = LawBuilder.build_law(law_content)
 
         law_linker = LawLinker(law)
-        law_linker.set_law_name_searcher(law_name_searcher=None)
         law_linker.link()
 
 

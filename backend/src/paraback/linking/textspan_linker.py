@@ -18,13 +18,23 @@ class TextspanLinker(ABC):
 
     def link(self):
         shortlinks = self.extract_shortlinks()
-        links = [self.short_to_long_link(shortlink) for shortlink in shortlinks]
-        self.textspan.links = links
+        links = [(link if TextspanLinker.is_long_link(link) else self.short_to_long_link(link)) for link in shortlinks]
+        if len(links) > 0:
+            self.textspan.links = links
+
+    def extract_external_links(self):
+        matches = []
+        if (searcher := self.__class__.law_name_searcher) is not None:
+            matches = searcher.external_links(self.textspan)
+            if len(matches) > 1:
+                self.confident = False
+        return matches
+
+
 
     @abstractmethod
     def extract_shortlinks(self):
         pass
-
 
     @staticmethod
     def parse_link_to_dict(string):
@@ -70,6 +80,10 @@ class TextspanLinker(ABC):
         if "sublit" in dic:
             res.append("SubLit" + dic["sublit"])
         return "-".join(res)
+
+    @staticmethod
+    def is_long_link(link: Link):
+        return link.url.startswith("DE-")
 
     def short_to_long_link(self, shortlink):
         context = TextspanLinker.parse_link_to_dict(self.textspan.parent_id)

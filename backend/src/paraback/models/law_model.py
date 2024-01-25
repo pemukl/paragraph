@@ -2,20 +2,19 @@ from __future__ import annotations
 import json
 import logging
 from abc import ABC, abstractmethod
-from pydantic import Field
+from pydantic import Field, ConfigDict
 
 from typing import List, Optional, Dict, Any, Literal, Union, Annotated
 
 from pydantic import BaseModel
 
-class BaseModel(BaseModel):
+class JurModel(BaseModel):
     parent_id: str
 
-    class Config:
-        extra = 'forbid'
+    model_config = ConfigDict(extra='ignore')
 
     @property
-    def tag(self: BaseModel):
+    def tag(self: JurModel):
         if isinstance(self, Paragraph):
             return "Par"
         if isinstance(self, Section):
@@ -60,72 +59,70 @@ class BaseModel(BaseModel):
         """get all textspans from content"""
         if (isinstance(self, TextSpan)):
             yield self
-        if (hasattr(self, "content")):
-            if (isinstance(self.content, list)):
-                for x in self.content:
-                    yield from x.get_textspans()
+        if (hasattr(self, "content") and isinstance(self.content, list)):
+            for x in self.content:
+                yield from x.get_textspans()
 
 
-class Link(BaseModel):
+class Link(JurModel):
     type: Literal["Link"] = "Link"
     url: str
     start_idx: int
     stop_idx: int
 
 
-class Reference(BaseModel):
+class Reference(JurModel):
     type: Literal["Reference"] = "Reference"
     text: str
     url: str
 
 
-class TextSpan(BaseModel):
+class TextSpan(JurModel):
     type: Literal["TextSpan"] = "TextSpan"
     text: str
     links: Optional[List[Link]] = None
 
-
-class Sublitera(BaseModel):
+class Sublitera(JurModel):
     type: Literal["SubLitera"] = "SubLitera"
     ordinal: Optional[str] = None
     content: Optional[List[TextSpan]] = None
 
 
-class Litera(BaseModel):
+class Litera(JurModel):
     type: Literal["Litera"] = "Litera"
     ordinal: Optional[str] = None
     content: Optional[List[Annotated[Union[TextSpan, Sublitera], Field(discriminator="type")]]] = None
 
 
-class Enumeration(BaseModel):
+class Enumeration(JurModel):
     type: Literal["Enumeration"] = "Enumeration"
     ordinal: Optional[str]
     content: Optional[List[Annotated[Union[TextSpan, Reference, Litera], Field(discriminator="type")]]] = None
     references: Optional[List[Reference]] = None
 
 
-class Sentence(BaseModel):
+class Sentence(JurModel):
     type: Literal["Sentence"] = "Sentence"
     ordinal: Optional[str] = None
     content: Optional[List[Annotated[Union[TextSpan, Reference, Enumeration], Field(discriminator="type")]]] = None
     references: Optional[List[Reference]] = None
 
 
-class Section(BaseModel):
+class Section(JurModel):
     type: Literal["Section"] = "Section"
     ordinal: Optional[str] = None
     content: Optional[List[Annotated[Union[TextSpan, Reference, Sentence, Enumeration], Field(discriminator="type")]]] = None
     references: Optional[List[Reference]] = None
 
 
-class Paragraph(BaseModel):
+class Paragraph(JurModel):
     type: Literal["Paragraph"] = "Paragraph"
     ordinal: Optional[str] = None
     title: str = ""
     content: Optional[List[Annotated[Union[TextSpan, Reference, Sentence, Enumeration, Section], Field(discriminator="type")]]] = None
 
 
-class Area(BaseModel):
+class Area(JurModel):
     type: Literal["Area"] = "Area"
     title: str = ""
     ordinal: Optional[str] = None
@@ -135,7 +132,7 @@ class Area(BaseModel):
         return "".join([x.to_text() for x in self.content])
 
 
-class Law(BaseModel):
+class Law(JurModel):
     type: Literal["Law"] = "Law"
     longname: Optional[str] = None
     title: str = ""

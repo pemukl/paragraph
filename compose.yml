@@ -8,12 +8,12 @@ services:
     environment:
       MONGO_URI: ${MONGO_URI}
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    environment:
-      MONGO_URI: ${MONGO_URI}
+  #backend:
+  #  build:
+  #    context: ./backend
+  #    dockerfile: Dockerfile
+  #  environment:
+  #    MONGO_URI: ${MONGO_URI}
 
 
 

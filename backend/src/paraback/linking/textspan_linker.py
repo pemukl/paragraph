@@ -2,28 +2,42 @@ import logging
 import os.path
 import pickle
 import re
+from abc import ABC, abstractmethod
 
-from paraback.models.law_model import Law, Link
+from paraback.models.law_model import Law, Link, TextSpan
 from paraback.util import get_data_path, suppress_stdout
 from tqdm import tqdm
 
 
-class Linker():
+class TextspanLinker(ABC):
 
-    def link_all(self, law: Law):
-        for span in law.get_textspans():
-            self.link(span)
+    def __init__(self, textspan: TextSpan):
+        self.textspan = textspan
+        self.confident = False
 
-    def link(self, span):
-        shortlinks = self.extract_shortlinks(span)
-        links = [Linker.short_to_long_link(shortlink, span) for shortlink in shortlinks]
-        span.links = links
 
-    def extract_shortlinks(self, span):
-        return []
+    def link(self):
+        shortlinks = self.extract_shortlinks()
+        links = [(link if TextspanLinker.is_long_link(link) else self.short_to_long_link(link)) for link in shortlinks]
+        if len(links) > 0:
+            self.textspan.links = links
+
+    def extract_external_links(self):
+        matches = []
+        if (searcher := self.__class__.law_name_searcher) is not None:
+            matches = searcher.external_links(self.textspan)
+            if len(matches) > 1:
+                self.confident = False
+        return matches
+
+
+
+    @abstractmethod
+    def extract_shortlinks(self):
+        pass
 
     @staticmethod
-    def parse_link(string):
+    def parse_link_to_dict(string):
         res = {}
         parts = string.split("-")
 
@@ -68,9 +82,12 @@ class Linker():
         return "-".join(res)
 
     @staticmethod
-    def short_to_long_link(shortlink, span):
-        context = Linker.parse_link(span.parent_id)
-        shorturl = Linker.parse_link(shortlink.url)
+    def is_long_link(link: Link):
+        return link.url.startswith("DE-")
+
+    def short_to_long_link(self, shortlink):
+        context = TextspanLinker.parse_link_to_dict(self.textspan.parent_id)
+        shorturl = TextspanLinker.parse_link_to_dict(shortlink.url)
         res = {}
 
         keys = ["jurisdiction", "law", "par", "sec", "sent", "enum", "lit", "sublit"]
@@ -85,48 +102,9 @@ class Linker():
                 if key in shorturl:
                     res[key] = shorturl[key]
 
-        return Link(start_idx=shortlink.start_idx, stop_idx=shortlink.stop_idx, url=Linker.dict_to_link(res),
+        return Link(start_idx=shortlink.start_idx, stop_idx=shortlink.stop_idx, url=TextspanLinker.dict_to_link(res),
                     parent_id=shortlink.parent_id)
 
-
-
-def main():
-    """ Main entry point of the app """
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.WARNING)
-
-    datapath = get_data_path()
-    sourcepath = os.path.join(datapath, "raw_jsons")
-    targetpath = os.path.join(datapath, "linked")
-
-    if not os.path.exists(targetpath):
-        os.makedirs(targetpath)
-
-    # iterate over all files in data/raw_jsons
-    targets = [f[:-5] for f in os.listdir(os.path.join(datapath, "raw_jsons")) if f.endswith(".json")]
-    #targets = ["eWpG"]
-
-    if len(targets) <= 10:
-        logger.setLevel(logging.DEBUG)
-
-    for target in (pbar := tqdm(targets)):
-        pbar.set_description(target.rjust(30))
-
-        with open(os.path.join(sourcepath, target + ".json")) as fi:
-            law = Law.model_validate_json(fi.read())
-
-        linker = RegexLinker()
-        linker.link_all(law)
-
-        filename = os.path.join(targetpath, target + ".json")
-        if os.path.exists(filename):
-            os.remove(filename)
-        with open(filename, "w") as fi:
-            json = law.model_dump_json(exclude_none=True, indent=2)
-            fi.write(json)
-
-
-if __name__ == "__main__":
-    """ This is executed when run from the command line """
-    main()
+    @classmethod
+    def set_law_name_searcher(cls, law_name_searcher):
+        cls.law_name_searcher = law_name_searcher

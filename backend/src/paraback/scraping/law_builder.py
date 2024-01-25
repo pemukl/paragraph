@@ -37,7 +37,7 @@ def ordinal(parser):
         ordinal = ordinal.replace("-", "–")
         ordinal = ordinal.replace(" ", "")
         ordinal = ordinal.replace(" ", "")
-        match = re.match(r"[^\da-zA-Z\(\)\.–•*▪ο□^α-ω]+$", ordinal)
+        match = re.match(r"[^\da-zA-Z().–•*▪□^α-ω]+$", ordinal)
         if match:
             logging.error("Suspicious char '" + match.string + "' in ordinal: " + ordinal)
         return ordinal
@@ -46,7 +46,7 @@ def ordinal(parser):
 
 class LawBuilder:
 
-
+    @staticmethod
     def build_law(html_content):
         soup = bs4.BeautifulSoup(html_content, "html.parser")
         abkspans = soup.find_all("span", {"class": "jnkurzueamtabk"})
@@ -99,11 +99,12 @@ class LawBuilder:
 
         return law
 
+    @staticmethod
     def build_area(parts, parent):
         tit = next(x for x in parts[0].children if not isinstance(x, NavigableString))
         spans = tit.h2.find_all("span", recursive=False)
         if (len(spans) != 2):
-            raise Exception("Expected 2 spans in area, got " + str(len(spans)))
+            raise RuntimeError("Expected 2 spans in area, got " + str(len(spans)))
         ordinal = spans[0].text
         area = Area(
             title=spans[1].text,
@@ -113,6 +114,7 @@ class LawBuilder:
         area.content = [LawBuilder.build_paragraph(ezn, area) for ezn in parts[1:]]
         return area
 
+    @staticmethod
     def build_paragraph(einzelnorm, parent):
         header = einzelnorm.h3
         ord_long = header.find(attrs={"class": "jnenbez"})
@@ -122,11 +124,11 @@ class LawBuilder:
             ordinal = None
         title = header.find(attrs={"class": "jnentitel"}).text
         par = Paragraph(ordinal=ordinal, title=title, parent_id=parent.id)
-        ctx.set(par.id)
         abss = einzelnorm.find_all(attrs={"class": "jurAbsatz"})
         par.content = [LawBuilder.build_section(abs, par) for abs in abss]
         return par
 
+    @staticmethod
     @ordinal
     def get_paragraph_ordinal(text):
         match = re.match(r"§ (.*)$", text)
@@ -140,13 +142,13 @@ class LawBuilder:
         else:
             return text.strip()
 
+    @staticmethod
     def build_section(absatz, parent):
 
         text = absatz.text
         ordinal_sec = LawBuilder.get_section_ordinal(text)
         len_ord = 0
         sec = Section(ordinal=ordinal_sec, parent_id=parent.id)
-        ctx.set(sec.id)
 
         if ordinal_sec is not None:
             len_ord = len(ordinal_sec)
@@ -190,16 +192,16 @@ class LawBuilder:
         sec.content = content
         return sec
 
+    @staticmethod
     @ordinal
     def get_section_ordinal(text):
         match = re.match(r"^\((\S+)\)", text)
-        len_ord = 0
 
         if match:
             ordinal_sec = match.group(1)
-            len_ord = len(ordinal_sec)
             return ordinal_sec
 
+    @staticmethod
     def build_enums(enum, parent, level=0, first_len=0):
         content = []
 
@@ -251,15 +253,16 @@ class LawBuilder:
             elif point.name == "br":
                 continue
             elif point.name in ["table","img", "a"]:
-                logging.info("Cannot (yet) content of type: " + str(point.name) + ": " + point.text)
+                logging.debug("Cannot (yet) parse content of type: " + str(point.name) + ": " + point.text)
             elif point.name in ["sup", "sub", "pre", "cite"]:
-                logging.info("Cannot (yet) do formatting of type: " + str(point.name) + ": " + point.text)
+                logging.debug("Cannot (yet) do formatting of type: " + str(point.name) + ": " + point.text)
             else:
                 logging.warning("unused " + str(point) + ": " + point.text)
 
 
         return content
 
+    @staticmethod
     def split_into_sentences(txt):
         tokenizer = nltk.data.load('tokenizers/punkt/german.pickle')
         res = tokenizer.tokenize(txt)
@@ -273,6 +276,7 @@ class LawBuilder:
 
         return out
 
+    @staticmethod
     @ordinal
     def get_enum_ordinal(text, level):
         if level == 0:
@@ -294,58 +298,3 @@ class LawBuilder:
                 return ordinal
 
         return text
-
-
-def main():
-    """ Main entry point of the app """
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.WARNING)
-    handler = logging.StreamHandler()
-    handler.setFormatter(
-        logging.Formatter('{context} {levelname}: {message}', style='{'))
-    handler.addFilter(ThreadingLocalContextFilter(['context']))
-    logger.addHandler(handler)
-
-    path = get_data_path()
-
-    errs = 0
-    succs = 0
-    targets = os.listdir(os.path.join(path, "htmls"))
-    #targets = ["mkseuchv_2005.html"]
-
-    if len(targets) <= 3:
-        logger.setLevel(logging.DEBUG)
-
-    for html_name in (pbar := tqdm(targets)):
-        ctx.set(html_name)
-        pbar.set_description(html_name.rjust(30))
-        if not html_name.endswith(".html"):
-            continue
-        with open(os.path.join(path, "htmls", html_name)) as f:
-            html_content = f.read()
-            try:
-                law = LawBuilder.build_law(html_content)
-                law.model_rebuild()
-                succs += 1
-            except Exception as e:
-                errs += 1
-                logging.error("Error while parsing " + html_name + ": " + str(e))
-                raise e
-                continue
-        target_folder = os.path.join(path, "raw_jsons")
-        if not os.path.exists(target_folder):
-            os.makedirs(target_folder)
-        filename = os.path.join(target_folder, law.stemmedabbreviation+".json")
-        if os.path.exists(filename):
-            os.remove(filename)
-        with open(filename, "w") as fi:
-            json = law.model_dump_json(exclude_none=True, indent=2)
-            fi.write(json)
-
-    #print("Parsed HTMLs with " + str(errs) + " errors and " + str(succs) + " successes. Thats " + str(
-    #    round(succs / (errs + succs) * 100, 2)) + "% success rate.")
-
-
-if __name__ == "__main__":
-    main()

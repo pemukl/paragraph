@@ -1,18 +1,27 @@
+import datetime
 import logging
 import os
 import multiprocessing
-import tqdm
+
+from tqdm_loggable.auto import tqdm
+from tqdm_loggable.tqdm_logging import tqdm_logging
+
 
 import typer
 
-from paraback import __title__ , __version__, util
+from paraback import __title__ , util
+from paraback.llmconnection.name_preprocessor import NamePreprocessor
 from paraback.scraping.nltk_downloader import download_punkt
-
 
 from pymongo import MongoClient
 
+from paraback.linking.law_linker import LawLinker
+from paraback.linking.law_name_searcher import LawNameSearcher
+from paraback.linking.regex_ts_linker import RegexTSLinker
 from paraback.orchestrator import Orchestrator
-from paraback.scraping.downloader import get_all_links
+from paraback.saving.mongo_connector import MongoConnector
+from paraback.scraping.law_builder import LawBuilder
+from paraback.scraping.scraper import Scraper
 
 logger = logging.getLogger('paraback')
 
@@ -24,7 +33,7 @@ app = typer.Typer(
 
 def version_callback(version: bool):
     if version:
-        typer.echo(f"{__title__} {__version__}")
+        typer.echo(f"{__title__}")
         raise typer.Exit()
 
 
@@ -54,23 +63,100 @@ def main(config_file: str = ConfigOption, version: bool = VersionOption):
     """
     config = util.load_config(config_file)
     util.logging_setup(config)
-    logger.info("All set up! Let's get going!")
+    tqdm_logging.set_level(logging.INFO)
 
-    links = get_all_links()[:10]
+    # Set the rate how often we update logs
+    # Defaults to 10 seconds - optional
+    tqdm_logging.set_log_rate(datetime.timedelta(seconds=5))
+    logger.info("All set up. Let's get going!")
+
+    links = Scraper.get_all_links()[:10]
+
+    htmls = (Scraper.download_link(link) for link in links)
+    laws = [LawBuilder.build_law(html) for html in htmls]
+
+    io = MongoConnector()
+    for law in laws:
+        io.write_name(law)
+
+    law_name_searcher = LawNameSearcher()
+
+    for law in laws:
+        linker = LawLinker(law)
+        linker.set_law_name_searcher(law_name_searcher)
+        linker.link()
+
+    for law_linked in laws:
+        io.write(law_linked)
 
     def process_link(link):
-        orchestrator = Orchestrator(link)
-        orchestrator.run()
-    print(links)
+        html = Scraper.download_link(link)
+        law = LawBuilder.build_law(html)
+        law_linked = RegexTSLinker.link_all(law)
+        io = MongoConnector()
+        io.write(law_linked)
 
-    for link in tqdm.tqdm(links, total=len(links), desc="scraping laws"):
+    for link in (pbar:=tqdm(links, total=len(links))):
+        pbar.set_description(f"Processing link {str(link.split('/')[-2])[:10].ljust(10,' ')}")
         process_link(link)
 
-    #with multiprocessing.Pool() as p:
-    #    list(tqdm.tqdm(p.imap(process_link, links), total=len(links), desc="scraping laws"))
 
     logger.info("All done. Bye!")
 
+
+@app.command("scrape")
+def scrape():
+    links = Scraper.get_all_links()
+
+    htmls = (Scraper.download_link(link) for link in links)
+    laws = (LawBuilder.build_law(html) for html in htmls)
+
+    io = MongoConnector(db="unlinked_laws")
+    for law in (pbar := tqdm(laws, desc='Scraping links', total=len(links))):
+        pbar.set_description(f"Downloading, Building and Saving '{law.stemmedabbreviation.ljust(25,' ')}'")
+        if law.abbreviation.endswith("Prot"):
+            logger.debug(f"Skipping '{law.stemmedabbreviation}'")
+            continue
+        io.write(law)
+
+@app.command("find_names")
+def find_names():
+    laws = MongoConnector(db="unlinked_laws").read_important()
+    io = MongoConnector()
+    for law in tqdm(laws):
+        name_processor = NamePreprocessor(law)
+        variants = name_processor.get_variants()
+        variants_dict = {string: law.stemmedabbreviation for string in variants}
+        io.write_name(variants_dict)
+
+@app.command("link")
+def link():
+    io_in = MongoConnector(db="unlinked_laws", collection="de")
+    io_out = MongoConnector(db="laws", collection="de")
+    count = io_in.count_important()
+    target_laws = io_in.read_important()
+    law_name_searcher = LawNameSearcher()
+    for law in (pbar := tqdm(target_laws, desc='Linking laws', total=count)):
+        pbar.set_description(f"Linking '{law.stemmedabbreviation.ljust(25,' ')}'")
+        linker = LawLinker(law)
+        linker.set_law_name_searcher(law_name_searcher)
+        linker.link()
+        io_out.write(law)
+
+@app.command("eWpG")
+def ewpg():
+    html = Scraper.download_link("https://www.gesetze-im-internet.de/ewpg/")
+    law = LawBuilder.build_law(html)
+    io = MongoConnector(collection="unlinked_laws")
+    io.write(law)
+    names_dict = io.read_all_names()
+    law_name_searcher = LawNameSearcher(names_dict)
+
+    io = MongoConnector(collection="laws")
+    linker = LawLinker(law)
+    linker.set_law_name_searcher(law_name_searcher)
+    linker.link()
+    io.write(law)
 
 if __name__ == "__main__":
     app()

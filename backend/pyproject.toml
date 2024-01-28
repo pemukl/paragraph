@@ -24,6 +24,7 @@ openai = "^1.9.0"
 ratelimit = "^2.2.1"
 streamlit = "^1.30.0"
 stqdm = "^0.0.5"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10"

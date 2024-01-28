@@ -10,6 +10,6 @@ class OpenAITSLinker(TextspanLinker):
 
     def extract_unrooted_links(self):
         OpenAITSLinker.calls += 1
-        print(f"{self.calls} OpenAI call: {self.textspan.text}")
+        #print(f"{self.calls} OpenAI call: {self.textspan.text}")
         return []
 

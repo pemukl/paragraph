@@ -24,7 +24,7 @@ class LawLinker:
     @staticmethod
     def link_and_save_law(law):
         linker = LawLinker(law)
-        linker.set_law_name_searcher(LawNameSearcher())
         linker.link()
         io = MongoConnector(db="laws", collection="de")
         io.write(law)
+        return law.stemmedabbreviation

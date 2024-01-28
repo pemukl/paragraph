@@ -14,6 +14,7 @@ from tqdm_loggable.auto import tqdm
 from tqdm_loggable.tqdm_logging import tqdm_logging
 import time
 
+from dotenv import load_dotenv
 
 import typer
 
@@ -28,6 +29,8 @@ from paraback.linking.law_linker import LawLinker
 from paraback.linking.law_name_searcher import LawNameSearcher
 from paraback.saving.mongo_connector import MongoConnector
 from paraback.scraping.law_builder import LawBuilder
+
+load_dotenv(os.path.join(os.getcwd(), "..", ".env"))
 
 logger = logging.getLogger('paraback')
 

@@ -1,6 +1,6 @@
+from paraback.linking.hybrid_textspan_linker import HybridTSLinker
 from paraback.linking.law_name_searcher import LawNameSearcher
-from paraback.linking.regex_ts_linker import RegexTSLinker
-from paraback.linking.openai_ts_linker import OpenAITSLinker
+from paraback.saving.mongo_connector import MongoConnector
 
 
 class LawNameSearcherMissingException(Exception):
@@ -11,8 +11,6 @@ class LawLinker:
     def __init__(self, law):
         self.law = law
 
-    def set_law_name_searcher(self, law_name_searcher):
-        LawLinker.law_name_searcher = law_name_searcher
 
     def link(self):
         if not LawLinker.law_name_searcher:
@@ -20,13 +18,13 @@ class LawLinker:
 
         unclear = []
         for span in self.law.get_textspans():
-            linker = RegexTSLinker(span)
-            linker.set_law_name_searcher(LawLinker.law_name_searcher)
-            linker.link()
-            if not linker.confident:
-                unclear.append(span)
-
-        for span in unclear:
-            linker = OpenAITSLinker(span)
+            linker = HybridTSLinker(span)
             linker.link()
 
+    @staticmethod
+    def link_and_save_law(law):
+        linker = LawLinker(law)
+        linker.set_law_name_searcher(LawNameSearcher())
+        linker.link()
+        io = MongoConnector(db="laws", collection="de")
+        io.write(law)

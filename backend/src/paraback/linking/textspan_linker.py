@@ -4,6 +4,7 @@ import pickle
 import re
 from abc import ABC, abstractmethod
 
+from paraback.linking.law_name_searcher import singleton_searcher
 from paraback.models.law_model import Law, Link, TextSpan
 from paraback.util import get_data_path, suppress_stdout
 from tqdm import tqdm
@@ -17,14 +18,19 @@ class TextspanLinker(ABC):
 
 
     def link(self):
-        shortlinks = self.extract_shortlinks()
-        links = [(link if TextspanLinker.is_long_link(link) else self.short_to_long_link(link)) for link in shortlinks]
+        shortlinks = self.extract_unrooted_links()
+        links=[]
+        for link in shortlinks:
+            if TextspanLinker.is_long_link(link):
+                links.append(link)
+            else:
+                links.append(self.root_link(link))
         if len(links) > 0:
             self.textspan.links = links
 
     def extract_external_links(self):
         matches = []
-        if (searcher := self.__class__.law_name_searcher) is not None:
+        if (searcher := singleton_searcher) is not None:
             matches = searcher.external_links(self.textspan)
             if len(matches) > 1:
                 self.confident = False
@@ -33,7 +39,7 @@ class TextspanLinker(ABC):
 
 
     @abstractmethod
-    def extract_shortlinks(self):
+    def extract_unrooted_links(self):
         pass
 
     @staticmethod
@@ -85,9 +91,9 @@ class TextspanLinker(ABC):
     def is_long_link(link: Link):
         return link.url.startswith("DE-")
 
-    def short_to_long_link(self, shortlink):
+    def root_link(self, unrooted_link):
         context = TextspanLinker.parse_link_to_dict(self.textspan.parent_id)
-        shorturl = TextspanLinker.parse_link_to_dict(shortlink.url)
+        shorturl = TextspanLinker.parse_link_to_dict(unrooted_link.url)
         res = {}
 
         keys = ["jurisdiction", "law", "par", "sec", "sent", "enum", "lit", "sublit"]
@@ -102,8 +108,8 @@ class TextspanLinker(ABC):
                 if key in shorturl:
                     res[key] = shorturl[key]
 
-        return Link(start_idx=shortlink.start_idx, stop_idx=shortlink.stop_idx, url=TextspanLinker.dict_to_link(res),
-                    parent_id=shortlink.parent_id)
+        return Link(start_idx=unrooted_link.start_idx, stop_idx=unrooted_link.stop_idx, url=TextspanLinker.dict_to_link(res),
+                    parent_id=unrooted_link.parent_id)
 
     @classmethod
     def set_law_name_searcher(cls, law_name_searcher):

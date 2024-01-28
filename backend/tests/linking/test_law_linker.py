@@ -2,7 +2,6 @@ import os.path
 import unittest
 
 from paraback.linking.law_linker import LawLinker
-from paraback.linking.law_name_searcher import LawNameSearcher
 from paraback.scraping.law_builder import LawBuilder
 from paraback.util import get_project_root
 

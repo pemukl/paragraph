@@ -38,7 +38,7 @@ class NamePreprocessor:
         client = OpenAI()
 
         completion = client.chat.completions.create(
-            model="gpt-3.5-turbo-1106",
+            model="gpt-4-1106-preview",
             response_format = { "type": "json_object" },
             messages=[
                 {"role": "system", "content": "Du bist ein linguistisches System, welches Gesetzesnamen in alle grammatikalischen Fälle dekliniert. Du antwortest nur mit JSON und dem key 'Kasus' mit einer Liste von Gesetzesnamen."},

@@ -2,10 +2,15 @@
 """
 Module Docstring
 """
+import logging
 import shutil
 from datetime import datetime
 import multiprocessing
 import os
+
+from paraback.saving.mongo_connector import MongoConnector
+
+logger = logging.getLogger('paraback')
 
 from requests_html import HTMLSession
 
@@ -19,6 +24,15 @@ class ParsingError(Exception):
 data_path = os.path.join("/Users", "marc", "Code", "paragraph", "backend", "data")
 
 class Scraper:
+
+    @staticmethod
+    def scrape_and_save_law(law):
+        io = MongoConnector(db="unlinked_laws")
+        if law.abbreviation.endswith("Prot"):
+            logger.debug(f"Skipping '{law.stemmedabbreviation}'")
+            return law.stemmedabbreviation
+        io.write(law)
+        return law.stemmedabbreviation
 
     @staticmethod
     def get_all_links():

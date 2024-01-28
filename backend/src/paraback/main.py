@@ -1,27 +1,33 @@
 import datetime
 import logging
 import os
-import multiprocessing
+from collections.abc import Iterable
+from multiprocessing import Pool
+from typing import Callable, Optional
+
+from openai import OpenAI
+
+import requests
+
 
 from tqdm_loggable.auto import tqdm
 from tqdm_loggable.tqdm_logging import tqdm_logging
+import time
 
 
 import typer
 
 from paraback import __title__ , util
 from paraback.llmconnection.name_preprocessor import NamePreprocessor
+from paraback.models.law_model import Law
 from paraback.scraping.nltk_downloader import download_punkt
+from paraback.scraping.scraper import Scraper
 
-from pymongo import MongoClient
 
 from paraback.linking.law_linker import LawLinker
 from paraback.linking.law_name_searcher import LawNameSearcher
-from paraback.linking.regex_ts_linker import RegexTSLinker
-from paraback.orchestrator import Orchestrator
 from paraback.saving.mongo_connector import MongoConnector
 from paraback.scraping.law_builder import LawBuilder
-from paraback.scraping.scraper import Scraper
 
 logger = logging.getLogger('paraback')
 
@@ -31,117 +37,40 @@ app = typer.Typer(
 )
 
 
-def version_callback(version: bool):
-    if version:
-        typer.echo(f"{__title__}")
-        raise typer.Exit()
-
-
-ConfigOption = typer.Option(
-    os.getcwd()+"/config/config.yml",
-    '-c',
-    '--config',
-    metavar='PATH',
-    help="path to the program configuration"
-)
-
-
-VersionOption = typer.Option(
-    None,
-    '-v',
-    '--version',
-    callback=version_callback,
-    is_eager=True,
-    help="print the program version and exit"
-)
-
-
-@app.command()
-def main(config_file: str = ConfigOption, version: bool = VersionOption):
-    """
-    The values of the CLI params that are passed to this application will show up als parameters to this function.
-    """
-    config = util.load_config(config_file)
-    util.logging_setup(config)
-    tqdm_logging.set_level(logging.INFO)
-
-    # Set the rate how often we update logs
-    # Defaults to 10 seconds - optional
-    tqdm_logging.set_log_rate(datetime.timedelta(seconds=5))
-    logger.info("All set up. Let's get going!")
-
-    links = Scraper.get_all_links()[:10]
-
-    htmls = (Scraper.download_link(link) for link in links)
-    laws = [LawBuilder.build_law(html) for html in htmls]
-
-    io = MongoConnector()
-    for law in laws:
-        io.write_name(law)
-
-    law_name_searcher = LawNameSearcher()
-
-    for law in laws:
-        linker = LawLinker(law)
-        linker.set_law_name_searcher(law_name_searcher)
-        linker.link()
-
-    for law_linked in laws:
-        io.write(law_linked)
-
-    def process_link(link):
-        html = Scraper.download_link(link)
-        law = LawBuilder.build_law(html)
-        law_linked = RegexTSLinker.link_all(law)
-        io = MongoConnector()
-        io.write(law_linked)
-
-    for link in (pbar:=tqdm(links, total=len(links))):
-        pbar.set_description(f"Processing link {str(link.split('/')[-2])[:10].ljust(10,' ')}")
-        process_link(link)
-
-
-    logger.info("All done. Bye!")
 
 
 @app.command("scrape")
-def scrape():
+def scrape(run_on_all_laws = None):
+    if run_on_all_laws is None:
+        run_on_all_laws = console_run_on_all
+
     links = Scraper.get_all_links()
 
     htmls = (Scraper.download_link(link) for link in links)
     laws = (LawBuilder.build_law(html) for html in htmls)
 
-    io = MongoConnector(db="unlinked_laws")
-    for law in (pbar := tqdm(laws, desc='Scraping links', total=len(links))):
-        pbar.set_description(f"Downloading, Building and Saving '{law.stemmedabbreviation.ljust(25,' ')}'")
-        if law.abbreviation.endswith("Prot"):
-            logger.debug(f"Skipping '{law.stemmedabbreviation}'")
-            continue
-        io.write(law)
+    run_on_all_laws(function= Scraper.scrape_and_save_law, laws=laws, count=len(links), workers=20)
+
 
 @app.command("find_names")
-def find_names():
-    laws = MongoConnector(db="unlinked_laws").read_important()
-    io = MongoConnector()
-    for law in tqdm(laws):
-        name_processor = NamePreprocessor(law)
-        variants = name_processor.get_variants()
-        variants_dict = {string: law.stemmedabbreviation for string in variants}
-        io.write_name(variants_dict)
+def find_names(run_on_all_laws = None):
+    if run_on_all_laws is None:
+        run_on_all_laws = console_run_on_all
+    io = MongoConnector(db="unlinked_laws")
+    total = io.count_important()
+    laws = io.read_important()
+    run_on_all_laws(function= LawNameSearcher.find_and_save_name, laws= laws, count= total, workers=100)
+
 
 @app.command("link")
-def link():
-    io_in = MongoConnector(db="unlinked_laws", collection="de")
-    io_out = MongoConnector(db="laws", collection="de")
-    count = io_in.count_important()
-    target_laws = io_in.read_important()
-    law_name_searcher = LawNameSearcher()
-    for law in (pbar := tqdm(target_laws, desc='Linking laws', total=count)):
-        pbar.set_description(f"Linking '{law.stemmedabbreviation.ljust(25,' ')}'")
-        linker = LawLinker(law)
-        linker.set_law_name_searcher(law_name_searcher)
-        linker.link()
-        io_out.write(law)
+def link(run_on_all_laws = None):
+    if run_on_all_laws is None:
+        run_on_all_laws = console_run_on_all
+    io = MongoConnector(db="unlinked_laws", collection="de")
+    count = io.count_all()
+    target_laws = io.read_all()
+    run_on_all_laws(LawLinker.link_and_save_law, target_laws, count)
+
 
 @app.command("eWpG")
 def ewpg():
@@ -158,5 +87,76 @@ def ewpg():
     linker.link()
     io.write(law)
 
+@app.command("test")
+def test():
+    all_working = True
+    logger.info("Testing the connection to the database")
+    if (MongoConnector.test_connection()):
+        logger.info("Connection to the database successful")
+    else:
+        logger.error("Connection to the database failed")
+        all_working = False
+
+    logger.info("Testing the connection to the openai api")
+    try:
+        OpenAI().models.list()
+    except Exception as e:
+        logger.error(e)
+        logger.error("Connection to the openai api failed")
+        all_working = False
+    else:
+        logger.info("Connection to the openai api successful")
+
+    if all_working:
+        logger.warning("Everything is working as expected")
+
+
+
+def version_callback(version: bool):
+    if version:
+        typer.echo(f"{__title__}")
+        raise typer.Exit()
+
+ConfigOption = typer.Option(
+    os.getcwd()+"/config/config.yml",
+    '-c',
+    '--config',
+    metavar='PATH',
+    help="path to the program configuration"
+)
+
+VersionOption = typer.Option(
+    None,
+    '-v',
+    '--version',
+    callback=version_callback,
+    is_eager=True,
+    help="print the program version and exit"
+)
+
+@app.command()
+def main(config_file: str = ConfigOption, version: bool = VersionOption):
+    """
+    The values of the CLI params that are passed to this application will show up als parameters to this function.
+    """
+    config = util.load_config(config_file)
+    util.logging_setup(config)
+    tqdm_logging.set_level(logging.INFO)
+    logger.setLevel(logging.DEBUG)
+
+    # Set the rate how often we update logs
+    # Defaults to 10 seconds - optional
+    tqdm_logging.set_log_rate(datetime.timedelta(seconds=5))
+    logger.info("All set up. Let's get going.")
+
+def console_run_on_all(function : Callable[[Law], str], laws : Iterable[Law], count : Optional[int]=None, workers: int=8):
+    if count is None:
+        count = len(list(laws))
+    with Pool(50) as p:
+        for name in (pbar := tqdm(p.imap(function, laws), total=count)):
+            pbar.set_description(f"Processed: {name.rjust(30)}")
+
+
 if __name__ == "__main__":
     app()
+

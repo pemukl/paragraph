@@ -19,6 +19,17 @@ class MongoConnector:
         self.lawdb = db
         self.collection = collection
 
+    @staticmethod
+    def test_connection():
+        try:
+            connection_string = os.getenv('MONGO_URI')
+            client = MongoClient(connection_string)
+            client.server_info()
+            client.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
     def read(self, stemmedabbreviation: str):
         client = MongoClient(self.connection_string)
@@ -49,6 +60,11 @@ class MongoConnector:
 
         return (self.read(name) for name in names)
 
+    def read_essential(self):
+        names = ["eWpG", "AktG","BGB", "DepotG", "BMG"]
+
+        return (self.read(name) for name in names)
+
     def count_important(self):
         names = self._important_names()
         return len(names)
@@ -72,6 +88,7 @@ class MongoConnector:
                 or re.search(r'\d\d\d\d', x)
         )
         return [x for x in names if not to_be_ignored(x)]
+
 
 
     def write(self, law: Law):
@@ -100,7 +117,10 @@ class MongoConnector:
 
     def write_name(self, names_dict: dict):
         names = self.read_all_names()
-        names.update(names_dict)
+        if names is None:
+            names = {}
+        else:
+            names.update(names_dict)
         self.overwrite_names(names)
 
 

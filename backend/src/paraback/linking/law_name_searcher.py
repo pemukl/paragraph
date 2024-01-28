@@ -3,17 +3,26 @@ from typing import Dict
 
 from paraback.models.law_model import TextSpan, Law, Link
 from paraback.saving.mongo_connector import MongoConnector
+from paraback.llmconnection.name_preprocessor import NamePreprocessor
+
+
+from ratelimit import limits, RateLimitException, sleep_and_retry
+
 
 
 class LawNameSearcher:
-    singleton = None
 
     def __init__(self, names: Dict[str, str] = None):
         self.translation_dict = names
         if not self.translation_dict:
             self.get_names_from_mongo()
 
-        self.regex = re.compile(r"\b(" + "|".join([f"{re.escape(key)}" for key in self.translation_dict.keys()]) + r")\b")
+        if self.translation_dict:
+            self.regex = re.compile(r"\b(" + "|".join([f"{re.escape(key)}" for key in self.translation_dict.keys()]) + r")\b")
+        else:
+            self.regex = re.compile(r"(?!.*)")
+
+        LawNameSearcher.singleton = self
 
     def get_names_from_mongo(self):
         io = MongoConnector()
@@ -35,3 +44,15 @@ class LawNameSearcher:
             link = Link(url=target, start_idx=start, stop_idx=end, parent_id=textspan.id)
             links.append(link)
         return links
+
+    @staticmethod
+    @sleep_and_retry
+    @limits(calls=4, period=1)
+    def find_and_save_name(law: Law):
+        name_processor = NamePreprocessor(law)
+        variants = name_processor.get_variants()
+        variants_dict = {string: law.stemmedabbreviation for string in variants}
+        MongoConnector().write_name(variants_dict)
+
+# singleton law name searcher
+singleton_searcher = LawNameSearcher()

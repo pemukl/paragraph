@@ -53,7 +53,7 @@ class RegexTSLinker(TextspanLinker):
         ordi = r"(?:\d+)[a-z]?"
         return r"(?:\s?(?:" + tags + r")\s(" + ordi + r"))"
 
-    def extract_shortlinks(self):
+    def extract_unrooted_links(self):
         text = self.textspan.text
         self.confident = True
 

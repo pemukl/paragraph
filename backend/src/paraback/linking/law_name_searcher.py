@@ -53,6 +53,7 @@ class LawNameSearcher:
         variants = name_processor.get_variants()
         variants_dict = {string: law.stemmedabbreviation for string in variants}
         MongoConnector().write_name(variants_dict)
+        return law.stemmedabbreviation
 
 # singleton law name searcher
 singleton_searcher = LawNameSearcher()

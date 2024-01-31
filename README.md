@@ -1,0 +1,26 @@
+# Paragraph
+
+## Introduction
+Paragraph is a hobby project designed to assist lawyers in navigating German legislation more efficiently. It addresses a significant gap in the current legal resources available at [gesetze-im-internet.de](https://gesetze-im-internet.de) by providing an enhanced interface with clickable references between laws, eliminating the need for manual searches. A live version of the project is available at [paragraph.shnei.de](https://paragraph.shnei.de).
+
+## Project Components
+The project pipeline comprises three main components:
+1. **Scraping Legislation:** Automated scraping of [gesetze-im-internet.de](https://gesetze-im-internet.de) to gather the text of laws.
+2. **Linking References:** Utilizing a combination of regex and API calls to OpenAI to identify and link references within the laws.
+3. **Frontend Display:** A Svelte-based frontend that presents the laws in a user-friendly format, accessible via [paragraph.shnei.de](https://paragraph.shnei.de).
+
+Both the backend and frontend are included in this mono-repository, each with its own dedicated README for more detailed information.
+
+## Setup and Installation
+To get started with Paragraph, you will need Docker installed on your system. The project comes with a Docker Compose file for easy setup. Simply clone the repository, configure your `.env` file based on the provided example, and use Docker Compose to build and run the application. Detailed instructions are provided in the project's documentation.
+
+## Technology Stack
+- **Backend:** Python with regex and OpenAI for processing and linking law references.
+- **Database:** MongoDB for storing linked laws and ensuring quick retrieval.
+- **Frontend:** Svelte for a responsive and interactive user interface.
+
+## Usage
+Once the application is running, users can navigate through German laws with ease, thanks to the clickable references that connect related legislation. This feature significantly reduces the time and effort required to access pertinent legal information.
+
+## Support and Feedback
+Feel free to hit me up for any feedback or ideas.

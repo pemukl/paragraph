@@ -9,8 +9,11 @@ from paraback.models.law_model import Law
 class MongoConnector:
     def __init__(self, db=None, collection=None):
 
-        connection_string = os.getenv('MONGO_URI')
-        self.connection_string = connection_string
+
+        self.connection_string = os.getenv('MONGO_URI')
+
+        if not self.test_connection():
+            self.connection_string = f"mongodb://{os.getenv('MONGO_ROOT_USERNAME')}:{os.getenv('MONGO_ROOT_PASSWORD')}@localhost:27017"
 
         db = db or os.getenv('MONGO_LAWDB') or "laws"
 
@@ -20,10 +23,20 @@ class MongoConnector:
         self.collection = collection
 
     @staticmethod
-    def test_connection():
+    def test_db_connection():
         try:
             connection_string = os.getenv('MONGO_URI')
             client = MongoClient(connection_string)
+            client.server_info()
+            client.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def test_connection(self):
+        try:
+            client = MongoClient(self.connection_string)
             client.server_info()
             client.close()
             return True

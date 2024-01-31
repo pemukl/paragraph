@@ -5,15 +5,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4173:4173
+    container_name: paragraph-frontend
     environment:
       MONGO_URI: ${MONGO_URI}
 
-  #backend:
-  #  build:
-  #    context: ./backend
-  #    dockerfile: Dockerfile
-  #  environment:
-  #    MONGO_URI: ${MONGO_URI}
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    container_name: paragraph-backend
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
 
 
 
@@ -26,6 +31,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_LAWDB}
+    container_name: paragraph-mongo
     volumes:
       - mongo-data:/data/db
       - mongo-config:/data/configdb

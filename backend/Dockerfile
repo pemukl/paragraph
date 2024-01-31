@@ -12,4 +12,6 @@ COPY ./src /app/src
 RUN poetry install --only-root
 RUN python /app/src/paraback/scraping/nltk_downloader.py
 
-ENTRYPOINT ["python", "-OO", "-m", "paraback", "--config", "/app/config/config.yml"]
+ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["python", "-OO", "-m", "paraback", "--config", "/app/config/config.yml"]
+

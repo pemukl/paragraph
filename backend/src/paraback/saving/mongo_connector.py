@@ -4,11 +4,13 @@ import re
 from pymongo import MongoClient
 
 from paraback.models.law_model import Law
+from dotenv import load_dotenv
+
 
 
 class MongoConnector:
     def __init__(self, db=None, collection=None):
-
+        load_dotenv(os.path.join(os.getcwd(), "..", ".env"))
 
         self.connection_string = os.getenv('MONGO_URI')
 
@@ -22,17 +24,6 @@ class MongoConnector:
         self.lawdb = db
         self.collection = collection
 
-    @staticmethod
-    def test_db_connection():
-        try:
-            connection_string = os.getenv('MONGO_URI')
-            client = MongoClient(connection_string)
-            client.server_info()
-            client.close()
-            return True
-        except Exception as e:
-            print(e)
-            return False
 
     def test_connection(self):
         try:

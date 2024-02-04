@@ -4,11 +4,13 @@ LABEL maintainer="Marc Schneider"
 
 RUN pip install poetry && poetry config virtualenvs.create false
 WORKDIR /app
-COPY ./config /app/config
-COPY pyproject.toml poetry.lock ./
+COPY ./.env /app/.env
+COPY ./backend/config /app/config
+COPY ./backend/pyproject.toml /app/pyproject.toml
+COPY ./backend/poetry.lock /app/poetry.lock
 RUN poetry install --only main --no-root --no-interaction && \
     poetry cache clear pypi --all
-COPY ./src /app/src
+COPY ./backend/src /app/src
 RUN poetry install --only-root
 RUN python /app/src/paraback/scraping/nltk_downloader.py
 

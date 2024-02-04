@@ -13,6 +13,8 @@ import requests
 from tqdm_loggable.auto import tqdm
 from tqdm_loggable.tqdm_logging import tqdm_logging
 import time
+from itertools import chain
+
 
 
 
@@ -60,8 +62,9 @@ def find_names(run_on_all_laws = None):
     if run_on_all_laws is None:
         run_on_all_laws = console_run_on_all
     io = MongoConnector(db="unlinked_laws")
-    total = io.count_important()
-    laws = io.read_important()
+    essential = io.read_essential()
+    total = len(essential) + io.count_important() + io.count_all()
+    laws = chain(essential, io.read_important(), io.read_all())
     run_on_all_laws(function= LawNameSearcher.find_and_save_name, laws= laws, count= total, workers=100)
 
 

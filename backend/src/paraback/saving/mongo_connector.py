@@ -67,7 +67,7 @@ class MongoConnector:
     def read_essential(self):
         names = ["eWpG", "AktG","BGB", "DepotG", "BMG"]
 
-        return (self.read(name) for name in names)
+        return [self.read(name) for name in names]
 
     def count_important(self):
         names = self._important_names()

@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 class MongoConnector:
     def __init__(self, db=None, collection=None):
-        load_dotenv(os.path.join(os.getcwd(), "..", ".env"))
+        load_dotenv(os.path.join(os.getcwd(), ".env"))
 
         self.connection_string = os.getenv('MONGO_URI')
 

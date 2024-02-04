@@ -17,7 +17,9 @@ If you want to deploy this project as a docker container, please ensure that [Do
 
     docker-compose up
 
-this will build the entire project with all dependencies inside a docker container. You may use the command line interface of the application now, e.g. by editing the `command` tag in the [`docker-compose.yml`](./docker-compose.yml).
+this will build the entire project with all dependencies inside a compose stack.
+You may use the command line interface of the application now by connecting to the backend container with `docker run -it --network paragraph_default --entrypoint /bin/bash paragraph-backend`.
+Run any command with `python src/paraback/main.py command`.
 
 ### Testing
 

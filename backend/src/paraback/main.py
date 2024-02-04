@@ -158,7 +158,7 @@ def main(config_file: str = ConfigOption, version: bool = VersionOption):
 def console_run_on_all(function : Callable[[Law], str], laws : Iterable[Law], count : Optional[int]=None, workers: int=8):
     if count is None:
         count = len(list(laws))
-    with Pool(50) as p:
+    with Pool(workers) as p:
         for name in (pbar := tqdm(p.imap(function, laws), total=count)):
             pbar.set_description(f"Processed: {name.rjust(30)}")
 

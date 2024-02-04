@@ -7,7 +7,7 @@ Paragraph is a hobby project designed to assist lawyers in navigating German leg
 The project pipeline comprises three main components:
 1. **Scraping Legislation:** Automated scraping of [gesetze-im-internet.de](https://gesetze-im-internet.de) to gather the text of laws.
 2. **Linking References:** Utilizing a combination of regex and API calls to OpenAI to identify and link references within the laws.
-3. **Frontend Display:** A Svelte-based frontend that presents the laws in a user-friendly format, accessible via [paragraph.shnei.de](https://paragraph.shnei.de/).
+3. **Frontend:** A Svelte-based frontend that presents the laws in a user-friendly format, accessible via [paragraph.shnei.de](https://paragraph.shnei.de/).
 
 Both the backend and frontend are included in this mono-repository, each with its own dedicated README for more detailed information.
 

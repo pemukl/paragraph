@@ -20,4 +20,7 @@ class HybridTSLinker(TextspanLinker):
             return shortlinks
 
         ai_linker = OpenAITSLinker(self.textspan)
-        return ai_linker.extract_unrooted_links()
+        ai_links = ai_linker.extract_unrooted_links()
+        if len(ai_links) > 0:
+            return ai_links
+        return shortlinks

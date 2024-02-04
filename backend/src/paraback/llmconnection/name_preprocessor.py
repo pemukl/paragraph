@@ -1,3 +1,5 @@
+import os
+
 from tqdm import tqdm
 
 from paraback.models.law_model import Law
@@ -35,7 +37,7 @@ class NamePreprocessor:
         example2 = ["AktG", "Aktiengesetz"]
         solution2 = ["AktG", "AktGs", "Aktiengesetz", "Aktiengesetzes"]
 
-        client = OpenAI()
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
         completion = client.chat.completions.create(
             model="gpt-4-1106-preview",

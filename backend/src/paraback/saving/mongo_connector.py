@@ -127,6 +127,10 @@ class MongoConnector:
             names.update(names_dict)
         self.overwrite_names(names)
 
+    def name_present(self, name: str):
+        names = self.read_all_names().values()
+        return name in names
+
 
     def read_all_names(self):
         client = MongoClient(self.connection_string)

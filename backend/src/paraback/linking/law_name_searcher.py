@@ -50,9 +50,11 @@ class LawNameSearcher:
     @limits(calls=4, period=1)
     def find_and_save_name(law: Law):
         name_processor = NamePreprocessor(law)
-        variants = name_processor.get_variants()
-        variants_dict = {string: law.stemmedabbreviation for string in variants}
-        MongoConnector().write_name(variants_dict)
+        connector = MongoConnector()
+        if not connector.name_present(law.stemmedabbreviation):
+            variants = name_processor.get_variants()
+            variants_dict = {string: law.stemmedabbreviation for string in variants}
+            MongoConnector().write_name(variants_dict)
         return law.stemmedabbreviation
 
 # singleton law name searcher

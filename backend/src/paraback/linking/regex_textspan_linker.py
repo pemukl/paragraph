@@ -70,7 +70,7 @@ class RegexTSLinker(TextspanLinker):
                     multiple_kws = True
 
         if len(levels) == 0:
-            return []
+            return externals
 
         if len(levels) > 1 and multiple_kws:
             self.confident = False
@@ -87,6 +87,7 @@ class RegexTSLinker(TextspanLinker):
                 match.stop_idx = max(match.stop_idx, external.stop_idx)
                 logger.debug(f"Found ext Link: {text[match.start_idx: match.stop_idx]} ({match.url})")
         elif len(externals)>0:
+
             matches.extend(externals)
             logger.info("too hard to match externals and internals: " + text)
 

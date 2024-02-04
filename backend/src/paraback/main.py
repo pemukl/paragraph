@@ -73,8 +73,9 @@ def link(run_on_all_laws = None):
     if run_on_all_laws is None:
         run_on_all_laws = console_run_on_all
     io = MongoConnector(db="unlinked_laws", collection="de")
-    count = io.count_all()
-    target_laws = io.read_all()
+    essential = io.read_essential()
+    count = len(essential)+io.count_all()
+    target_laws = chain(essential, io.read_all())
     run_on_all_laws(LawLinker.link_and_save_law, target_laws, count)
 
 

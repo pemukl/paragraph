@@ -86,7 +86,6 @@ def ewpg():
 
     io = MongoConnector(collection="laws")
     linker = LawLinker(law)
-    linker.set_law_name_searcher(law_name_searcher)
     linker.link()
     io.write(law)
 

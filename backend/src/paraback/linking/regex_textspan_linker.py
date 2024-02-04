@@ -40,7 +40,7 @@ class RegexTSLinker(TextspanLinker):
 
     @staticmethod
     def _build_confident_regex(tags):
-        ordi = r"(?:\d+)[a-z]?"
+        ordi = r"(?:(?:\d+)[a-z]?)|[a-z]"
         joints = r"(?:\s(?:und|bis| ?\- ?)\s)?"
 
         return \

@@ -228,6 +228,10 @@ class LawBuilder:
                     elif subpoint.name == "dd":
                         if ordinal is None:
                             logging.warning("Careful: Ordinal is not set: " + subpoint.text)
+                        if ordinal.endswith(")"):
+                            ordinal = ordinal[:-1]
+                        if ordinal.startswith("("):
+                            ordinal = ordinal[1:]
                         pt = None
                         if level == 0:
                             pt = Enumeration(ordinal=ordinal, parent_id=parent.id)
